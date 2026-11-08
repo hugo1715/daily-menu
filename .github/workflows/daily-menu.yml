@@ -1,0 +1,64 @@
+name: Daily Menu Build and Deploy
+
+on:
+  schedule:
+    # UTC 16:05 = 北京时间次日 00:05（GitHub 的 schedule 可能延迟数分钟）
+    - cron: '5 16 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出仓库
+        uses: actions/checkout@v4
+
+      - name: 安装 Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 生成今日菜单
+        run: node scripts/generate-daily.mjs
+
+      - name: 提交生成结果
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/data/today.json data/history.json
+          if git diff --cached --quiet; then
+            echo "本次没有数据变化，跳过提交"
+          else
+            git commit -m "chore: 更新 $(date -u +%Y-%m-%d) 菜单"
+            git push
+          fi
+
+      - name: 配置 Pages
+        uses: actions/configure-pages@v5
+
+      - name: 打包 public/ 为 Pages 产物
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+  deploy:
+    name: deploy
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: 部署到 GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>今日开锅 · 每天九道家常菜</title>
+<meta name="description" content="每天一份电炒锅就能完成的九道菜：三道荤菜、三道素菜、三道汤。" />
+<meta name="theme-color" content="#f6f1e7" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='34' r='22' fill='%23241f1b'/%3E%3Crect x='10' y='30' width='44' height='4' rx='2' fill='%23f6f1e7'/%3E%3C/svg%3E" />
+<style>
+  :root {
+    --paper: #f6f1e7;
+    --paper-2: #efe7d8;
+    --ink: #241f1b;
+    --ink-soft: #5d534a;
+    --line: #d8cdb9;
+    --meat: #b7472f;
+    --veg: #506b49;
+    --soup: #a87b32;
+    --radius: 14px;
+    --shadow: 0 1px 2px rgba(36, 31, 27, .06), 0 10px 24px -16px rgba(36, 31, 27, .35);
+  }
+
+  * { box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    padding: 0 20px 64px;
+    background:
+      radial-gradient(1100px 520px at 12% -10%, #fffdf7 0%, rgba(255, 253, 247, 0) 60%),
+      radial-gradient(900px 460px at 100% 0%, #f0e6d4 0%, rgba(240, 230, 212, 0) 55%),
+      var(--paper);
+    color: var(--ink);
+    font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 1120px; margin: 0 auto; }
+
+  /* ---------- 顶部 ---------- */
+  header.site {
+    padding: 44px 0 26px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .topline {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .brand {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin: 0;
+    font-size: clamp(30px, 5vw, 44px);
+    font-weight: 800;
+    letter-spacing: .04em;
+  }
+
+  .brand .seal {
+    display: inline-grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: var(--ink);
+    color: var(--paper);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0;
+    transform: translateY(-4px);
+  }
+
+  .brand small {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .22em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+  }
+
+  .dateline {
+    font-variant-numeric: tabular-nums;
+    font-size: 13px;
+    letter-spacing: .08em;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+
+  .lede {
+    max-width: 46em;
+    margin: 18px 0 0;
+    font-size: 15px;
+    color: var(--ink-soft);
+    text-wrap: pretty;
+  }
+
+  .lede strong { color: var(--ink); font-weight: 700; }
+
+  /* ---------- 状态条 ---------- */
+  .status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 10px 14px;
+    border: 1px dashed var(--line);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, .45);
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+
+  .status .dot {
+    width: 7px; height: 7px;
+    flex: none;
+    border-radius: 50%;
+    background: var(--veg);
+  }
+
+  .status[data-tone="wait"] { border-color: #d9b86a; background: rgba(255, 246, 224, .7); }
+  .status[data-tone="wait"] .dot { background: #d9a93a; animation: pulse 1.6s ease-in-out infinite; }
+  .status[data-tone="error"] { border-color: #d08a72; background: rgba(255, 236, 231, .7); }
+  .status[data-tone="error"] .dot { background: #b7472f; }
+
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .25; } }
+
+  /* ---------- 分区 ---------- */
+  .board { display: grid; gap: 40px; margin-top: 40px; }
+
+  section.cat { --accent: var(--meat); }
+
+  .cat-head {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--accent);
+  }
+
+  .cat-head h2 {
+    margin: 0;
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: .08em;
+  }
+
+  .cat-head .en {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .2em;
+    color: var(--accent);
+    text-transform: uppercase;
+  }
+
+  .cat-head .note {
+    margin-left: auto;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 18px;
+  }
+
+  /* ---------- 卡片 ---------- */
+  article.card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px 18px 18px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: #fffdf8;
+    box-shadow: var(--shadow);
+    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  }
+
+  article.card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+    box-shadow: 0 18px 34px -22px rgba(36, 31, 27, .5);
+  }
+
+  .card-index {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .18em;
+    color: var(--accent);
+  }
+
+  .card-index::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--line), transparent);
+  }
+
+  .card h3 {
+    margin: 0;
+    font-size: 22px;
+    line-height: 1.25;
+    font-weight: 800;
+    letter-spacing: .02em;
+  }
+
+  .card .note {
+    margin: 0;
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .meta li {
+    padding: 2px 8px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 12px;
+    color: var(--ink-soft);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .meta li.hard { border-color: #d8b38a; color: #8a5a1f; }
+  .meta li.mid  { border-color: #d9c489; color: #7d6420; }
+
+  .ingredients {
+    margin: 0;
+    padding: 12px 0 0;
+    border-top: 1px dashed var(--line);
+    font-size: 13px;
+    line-height: 1.9;
+    color: var(--ink);
+  }
+
+  .ingredients span.label {
+    display: block;
+    margin-bottom: 2px;
+    font-size: 11px;
+    letter-spacing: .16em;
+    color: var(--ink-soft);
+  }
+
+  .video {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 9px 12px;
+    border: 1px solid var(--accent);
+    border-radius: 10px;
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background .16s ease, color .16s ease;
+  }
+
+  .video:hover,
+  .video:focus-visible {
+    background: var(--accent);
+    color: #fffdf8;
+  }
+
+  .video svg { flex: none; }
+
+  /* ---------- 骨架屏 ---------- */
+  .skeleton { display: grid; gap: 16px; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 18px; }
+
+  .skeleton i {
+    display: block;
+    height: 210px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: linear-gradient(100deg, #fffdf8 30%, #f2ebdd 50%, #fffdf8 70%);
+    background-size: 220% 100%;
+    animation: shimmer 1.5s linear infinite;
+  }
+
+  @keyframes shimmer { from { background-position: 120% 0; } to { background-position: -120% 0; } }
+
+  /* ---------- 底部 ---------- */
+  footer.site {
+    margin-top: 56px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    display: grid;
+    gap: 6px;
+  }
+
+  footer.site code {
+    padding: 1px 5px;
+    border-radius: 5px;
+    background: var(--paper-2);
+    font-size: 12px;
+  }
+
+  /* ---------- 响应式 ---------- */
+  @media (max-width: 900px) {
+    .cards, .skeleton { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  @media (max-width: 620px) {
+    body { padding: 0 14px 48px; }
+    header.site { padding-top: 32px; }
+    .cards, .skeleton { grid-template-columns: 1fr; }
+    .cat-head { flex-wrap: wrap; }
+    .cat-head .note { margin-left: 0; width: 100%; }
+    .card h3 { font-size: 20px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <div class="topline">
+      <h1 class="brand">
+        <span class="seal">锅</span>
+        今日开锅
+        <small>Daily Wok</small>
+      </h1>
+      <div class="dateline" id="dateline">—</div>
+    </div>
+    <p class="lede">
+      每天一份<strong>电炒锅就能做完</strong>的菜单：三道荤菜、三道素菜、三道汤，照着买、照着做。
+    </p>
+    <div class="status" id="status" data-tone="loading">
+      <span class="dot"></span>
+      <span id="status-text">正在读取今天的菜单…</span>
+    </div>
+  </header>
+
+  <main class="board" id="board" aria-live="polite">
+    <div class="skeleton"><i></i><i></i><i></i></div>
+  </main>
+
+  <footer class="site">
+    <div>菜单每天北京时间 00:05 自动生成，同一天内所有人看到的是同一份。</div>
+    <div id="foot-meta">—</div>
+    <div>视频入口优先指向固定教程，未配置时跳转 B 站搜索（关键词 = 菜名 + 电炒锅 + 教程）。</div>
+  </footer>
+</div>
+
+<script>
+(() => {
+  'use strict';
+
+  const DATA_URL = './data/today.json';
+  const REFRESH_MS = 60 * 1000;           // 每分钟检查一次是否有新菜单
+  const RETRY_MS = 60 * 1000;             // 菜单还没生成时的重试间隔
+
+  const board = document.getElementById('board');
+  const status = document.getElementById('status');
+  const statusText = document.getElementById('status-text');
+  const dateline = document.getElementById('dateline');
+  const footMeta = document.getElementById('foot-meta');
+
+  const ACCENT = { meat: 'var(--meat)', veg: 'var(--veg)', soup: 'var(--soup)' };
+
+  let lastGeneratedAt = null;
+  let retryTimer = null;
+
+  const beijingToday = () => new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Asia/Shanghai', year: 'numeric', month: '2-digit', day: '2-digit',
+  }).format(new Date());
+
+  const weekday = (dateStr) => {
+    const [y, m, d] = dateStr.split('-').map(Number);
+    return ['周日', '周一', '周二', '周三', '周四', '周五', '周六'][new Date(Date.UTC(y, m - 1, d)).getUTCDay()];
+  };
+
+  function setStatus(tone, text) {
+    status.dataset.tone = tone;
+    statusText.textContent = text;
+  }
+
+  function escapeHtml(str) {
+    return String(str).replace(/[&<>"']/g, (ch) => (
+      { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]
+    ));
+  }
+
+  function difficultyClass(level) {
+    if (level === '稍难') return 'hard';
+    if (level === '中等') return 'mid';
+    return '';
+  }
+
+  function cardHtml(dish, index) {
+    const tags = dish.ingredients.map((item) => `<span>${escapeHtml(item)}</span>`).join(' · ');
+    return `
+      <article class="card">
+        <div class="card-index">NO.0${index + 1}</div>
+        <h3>${escapeHtml(dish.name)}</h3>
+        <p class="note">${escapeHtml(dish.note || '')}</p>
+        <ul class="meta">
+          <li>${dish.minutes} 分钟</li>
+          <li class="${difficultyClass(dish.difficulty)}">${escapeHtml(dish.difficulty)}</li>
+        </ul>
+        <p class="ingredients">
+          <span class="label">主料</span>${tags}
+        </p>
+        <a class="video" href="${escapeHtml(dish.videoUrl)}" target="_blank" rel="noopener noreferrer">
+          <span>${dish.videoSource === 'fixed' ? '看教学视频' : 'B 站搜索教程'}</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M7 17 17 7M9 7h8v8" />
+          </svg>
+        </a>
+      </article>`;
+  }
+
+  function render(data) {
+    board.innerHTML = data.categories.map((cat) => `
+      <section class="cat" style="--accent:${cat.accent || ACCENT[cat.key] || 'var(--ink)'}">
+        <div class="cat-head">
+          <h2>${escapeHtml(cat.label)}</h2>
+          <span class="en">${escapeHtml(cat.en)}</span>
+          <span class="note">${escapeHtml(cat.note)}</span>
+        </div>
+        <div class="cards">${cat.dishes.map(cardHtml).join('')}</div>
+      </section>`).join('');
+
+    dateline.textContent = `${data.date.replaceAll('-', '.')} ${weekday(data.date)}`;
+    const time = new Date(data.generatedAt).toLocaleString('zh-CN', {
+      timeZone: 'Asia/Shanghai', hour12: false,
+      month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit',
+    });
+    footMeta.textContent = `本菜单生成于 ${time} · 去重窗口 ${data.windowDays} 天 · 共 ${data.categories.reduce((n, c) => n + c.dishes.length, 0)} 道菜`;
+
+    const today = beijingToday();
+    if (data.date === today) {
+      setStatus('ok', `今日菜单已就绪 · ${data.date} 北京时间`);
+    } else {
+      setStatus('wait', `正在等待今日（${today}）的菜单生成，页面会自动重试…`);
+      scheduleRetry();
+    }
+  }
+
+  function scheduleRetry() {
+    clearTimeout(retryTimer);
+    retryTimer = setTimeout(() => load({ silent: true }), RETRY_MS);
+  }
+
+  async function load({ silent = false } = {}) {
+    try {
+      const res = await fetch(`${DATA_URL}?v=${Date.now()}`, { cache: 'no-store' });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+
+      const changed = data.generatedAt !== lastGeneratedAt || data.date !== dateline.dataset.date;
+      if (!silent || changed) {
+        render(data);
+        lastGeneratedAt = data.generatedAt;
+        dateline.dataset.date = data.date;
+      }
+    } catch (err) {
+      if (!silent) {
+        setStatus('error', '菜单读取失败，请稍后刷新页面重试。');
+        board.innerHTML = `
+          <section class="cat" style="--accent:var(--meat)">
+            <div class="cat-head"><h2>暂时读不到菜单</h2></div>
+            <p class="lede">如果刚部署完，通常等一两分钟即可；如果持续出现，请检查 <code>public/data/today.json</code> 是否已生成。</p>
+          </section>`;
+      }
+      console.warn('[daily-wok] 读取今日菜单失败：', err);
+      scheduleRetry();
+    }
+  }
+
+  load();
+  setInterval(() => load({ silent: true }), REFRESH_MS);
+})();
+</script>
+</body>
+</html>

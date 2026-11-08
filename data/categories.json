@@ -1,0 +1,23 @@
+[
+  {
+    "key": "meat",
+    "label": "荤菜",
+    "en": "MEAT",
+    "note": "今天吃点扎实的",
+    "accent": "#b7472f"
+  },
+  {
+    "key": "veg",
+    "label": "素菜",
+    "en": "VEGGIE",
+    "note": "清脆鲜香，给餐桌留白",
+    "accent": "#506b49"
+  },
+  {
+    "key": "soup",
+    "label": "汤",
+    "en": "SOUP",
+    "note": "一口热汤，把一天收好",
+    "accent": "#a87b32"
+  }
+]
