@@ -6,8 +6,10 @@
 | 项目类型 | 个人每日菜谱推荐网站 |
 | 技术方向 | GitHub Actions + GitHub Pages + 静态前端 |
 | 本地目录 | `C:\Users\phoenix\Documents\daily-wok` |
-| 当前状态 | 代码、内容、本地验收已完成；GitHub 仓库 / Pages / 线上验收未开始 |
-| 文档版本 | 2026-11-08 更新（第一版交接后完成本地重写与验收） |
+| 当前状态 | 已推送至 GitHub `hugo1715/daily-menu`（main @ `87e70ff`）；Pages 与首次 Actions 运行待配置 |
+| 远程仓库 | `git@github.com:hugo1715/daily-menu.git`（SSH；本机 HTTPS 到 github.com 被阻断） |
+| 预期站点 | `https://hugo1715.github.io/daily-menu/` |
+| 文档版本 | 2026-11-08 更新（本地重写验收 + 已推送 GitHub） |
 | 文档用途 | 交接项目背景、完成情况、风险与后续动作 |
 
 > **与上一版的差别**：上一版记录“代码稿已准备但可能在 `setup-project.ps1` 里丢失”。
@@ -184,16 +186,22 @@ daily-wok/
 | Actions 工作流 | 已完成（未运行） | 需推送到 GitHub 后才可验证 |
 | 本地文件生成 | 已完成 | 全部文件落盘 |
 | 本地预览 | 已完成 | `npm run preview` |
-| GitHub 仓库 | **未开始** | 需你的账号操作 |
-| GitHub Pages | **未开始** | 需在仓库设置里开启 |
+| GitHub 仓库 | ✅ 已完成 | `hugo1715/daily-menu`，`main` 已推送（实际仓库名是 `daily-menu`，不是约定的 `daily-wok`） |
+| GitHub Pages | **未开始** | 需在仓库设置里把 Source 设为 GitHub Actions |
+| 首次 Actions 运行 | **未开始** | 需手动 Run workflow |
 | 线上验收 | **未开始** | 尚无公开地址 |
 
 ## 2.5 当前存在的问题
 
-### P0：GitHub 仓库、Actions、Pages 全部未配置
+### P0：Pages 发布源与 Actions 权限尚未配置
 
-仍未完成：`git init` / 提交 / 推送、Pages 发布源（GitHub Actions）、Workflow permissions（读写）、第一次线上运行、线上验收。
-**这是当前唯一的阻塞点**，必须用你的 GitHub 账号操作。
+仓库已推送成功，但下面三件事没做，站点不会上线：
+
+1. `Settings → Pages → Source` 设为 **GitHub Actions**（否则没有发布源，页面 404）；
+2. `Settings → Actions → General → Workflow permissions` 设为 **Read and write**（否则工作流无法把生成结果 commit 回仓库）；
+3. `Actions → Daily Menu Build and Deploy → Run workflow` 手动跑一次。
+
+**这是当前唯一的阻塞点**，只能由仓库所有者在网页上操作。
 
 ### P1：本机没有可用的 Node.js / npm
 
@@ -203,6 +211,12 @@ daily-wok/
 - 处理建议：装一个 Node LTS（20 或 22）到系统 PATH；装完后 `npm run generate` 即可直接用。
 
 同样地，`git` 已安装（`C:\Program Files\Git\cmd\git.exe`，2.56.0），但当前会话 PATH 里没有；已配置 `user.name = hugo1715`。正常终端里如果 `git` 不可用，把 Git 的 `cmd` 目录加进 PATH 即可。
+
+### P1：本机 HTTPS 到 github.com 被阻断，已改用 SSH
+
+- 实测 `github.com:443` 不可达（连接超时），而 `api.github.com:443`、`github.com:22`、`ssh.github.com:443` 均可达；
+- 因此 `origin` 使用 SSH：`git@github.com:hugo1715/daily-menu.git`，本机公钥已加入 GitHub 账号；
+- 影响：`git push/pull` 正常，但**不能用 HTTPS 地址克隆或推送**；换机器/换网络时需重新处理（有可用代理时可临时切回 HTTPS）。
 
 ### P1：视频链接不是精确视频
 
@@ -263,17 +277,17 @@ GitHub `schedule` 可能延迟数分钟。页面已处理：数据日期落后�
 - [x] 检查视频入口链接格式（未逐条点开）
 - [ ] **安装 Node LTS 到系统 PATH**（仅本地手动运行时需要）
 
-## 3.2 第二优先级：发布到 GitHub Pages（未开始，需要你的账号）
+## 3.2 第二优先级：发布到 GitHub Pages（进行中）
 
-- [ ] 在 GitHub 新建 **Public** 仓库（建议名 `daily-wok`）
-- [ ] 本地初始化并推送：
+- [x] 在 GitHub 新建 **Public** 仓库（实际名字：`daily-menu`）
+- [x] 本地初始化、提交并推送（`main`，commit `87e70ff`，15 个文件）
 
   ```powershell
   cd C:\Users\phoenix\Documents\daily-wok
   git init -b main
   git add .
-  git commit -m "chore: 初始化今日开锅"
-  git remote add origin https://github.com/<用户名>/daily-wok.git
+  git commit -m "chore: 初始化今日开锅（90 道菜、生成脚本、页面与工作流）"
+  git remote add origin git@github.com:hugo1715/daily-menu.git
   git push -u origin main
   ```
 
@@ -281,7 +295,7 @@ GitHub `schedule` 可能延迟数分钟。页面已处理：数据日期落后�
 - [ ] `Settings → Actions → General`：Workflow permissions 选 **Read and write permissions**
 - [ ] `Actions → Daily Menu Build and Deploy → Run workflow` 手动跑一次
 - [ ] 确认 `build` 与 `deploy` 两个 job 都成功
-- [ ] 打开 `https://<用户名>.github.io/daily-wok/` 验收
+- [ ] 打开 `https://hugo1715.github.io/daily-menu/` 验收
 
 ## 3.3 第三优先级：上线验收
 
@@ -357,14 +371,14 @@ $env:DAILY_WOK_DATE = '2026-11-01'; node scripts/generate-daily.mjs; Remove-Item
 
 项目需求、技术方案、90 道菜品、生成逻辑、页面与工作流**均已落地并本地验收通过**，不再是“只有设计稿”的状态。
 
-当前唯一的阻塞点是**外部配置**，全部需要 GitHub 账号操作：
+当前阻塞点已从“没有仓库”缩小到**仓库设置**，都必须用 GitHub 网页操作：
 
-1. 建仓库并推送 `main`；
-2. Pages 发布源设为 GitHub Actions；
-3. Actions 授予读写权限；
-4. 手动跑一次工作流并做线上验收。
+1. Pages 发布源设为 GitHub Actions；
+2. Actions 授予读写权限；
+3. 手动跑一次工作流；
+4. 线上验收：`https://hugo1715.github.io/daily-menu/`。
 
-建议严格按「推送 GitHub → 配置 Pages → 手动跑一次 → 线上验收 → 第二天验证自动更新」推进；视觉优化与扩充菜品放到线上稳定之后再做。
+配置完成后建议第二天再验证一次定时任务（UTC 16:05 触发），确认自动 commit 与重新部署都正常；视觉优化与扩充菜品放到线上稳定之后再做。
 
 本地若还需要手动生成，先装 Node LTS 20/22（当前系统 PATH 里没有 Node，本次验收用的是 DSH 内置运行时）。
 
