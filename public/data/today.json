@@ -1,9 +1,9 @@
 {
-  "date": "2026-11-08",
+  "date": "2026-11-09",
   "timezone": "Asia/Shanghai",
-  "generatedAt": "2026-11-08T10:58:13.759Z",
+  "generatedAt": "2026-11-08T16:30:15.123Z",
   "windowDays": 9,
-  "mode": "reuse",
+  "mode": "fresh",
   "categories": [
     {
       "key": "meat",
@@ -13,48 +13,49 @@
       "accent": "#b7472f",
       "dishes": [
         {
-          "id": "m22",
-          "name": "啤酒鸭",
+          "id": "m16",
+          "name": "白灼虾",
           "ingredients": [
-            "鸭肉",
-            "啤酒",
-            "姜",
-            "青蒜"
+            "鲜虾",
+            "姜片",
+            "料酒",
+            "小米辣"
           ],
-          "minutes": 60,
-          "difficulty": "中等",
-          "note": "啤酒去腥增香，鸭肉不柴",
-          "videoUrl": "https://search.bilibili.com/all?keyword=%E5%95%A4%E9%85%92%E9%B8%AD%20%E7%94%B5%E7%82%92%E9%94%85%20%E6%95%99%E7%A8%8B",
-          "videoSource": "search"
-        },
-        {
-          "id": "m12",
-          "name": "土豆烧牛肉",
-          "ingredients": [
-            "牛腩",
-            "土豆",
-            "胡萝卜",
-            "八角"
-          ],
-          "minutes": 80,
-          "difficulty": "中等",
-          "note": "土豆炖到起沙，汤汁浓稠",
-          "videoUrl": "https://search.bilibili.com/all?keyword=%E5%9C%9F%E8%B1%86%E7%83%A7%E7%89%9B%E8%82%89%20%E7%94%B5%E7%82%92%E9%94%85%20%E6%95%99%E7%A8%8B",
-          "videoSource": "search"
-        },
-        {
-          "id": "m11",
-          "name": "香菇滑鸡",
-          "ingredients": [
-            "鸡腿肉",
-            "干香菇",
-            "姜",
-            "蚝油"
-          ],
-          "minutes": 35,
+          "minutes": 12,
           "difficulty": "简单",
-          "note": "香菇吸饱鸡汤，比鸡肉还香",
-          "videoUrl": "https://search.bilibili.com/all?keyword=%E9%A6%99%E8%8F%87%E6%BB%91%E9%B8%A1%20%E7%94%B5%E7%82%92%E9%94%85%20%E6%95%99%E7%A8%8B",
+          "note": "水开下锅三分钟，蘸汁即食",
+          "videoUrl": "https://search.bilibili.com/all?keyword=%E7%99%BD%E7%81%BC%E8%99%BE%20%E7%94%B5%E7%82%92%E9%94%85%20%E6%95%99%E7%A8%8B",
+          "videoSource": "search"
+        },
+        {
+          "id": "m04",
+          "name": "红烧鸡腿",
+          "ingredients": [
+            "鸡腿",
+            "姜",
+            "八角",
+            "生抽",
+            "冰糖"
+          ],
+          "minutes": 40,
+          "difficulty": "中等",
+          "note": "炖到脱骨，汤汁拌饭一绝",
+          "videoUrl": "https://search.bilibili.com/all?keyword=%E7%BA%A2%E7%83%A7%E9%B8%A1%E8%85%BF%20%E7%94%B5%E7%82%92%E9%94%85%20%E6%95%99%E7%A8%8B",
+          "videoSource": "search"
+        },
+        {
+          "id": "m30",
+          "name": "蒜蓉粉丝虾",
+          "ingredients": [
+            "鲜虾",
+            "龙口粉丝",
+            "蒜末",
+            "蒸鱼豉油"
+          ],
+          "minutes": 25,
+          "difficulty": "中等",
+          "note": "粉丝铺底，把蒜蓉酱汁全吸走",
+          "videoUrl": "https://search.bilibili.com/all?keyword=%E8%92%9C%E8%93%89%E7%B2%89%E4%B8%9D%E8%99%BE%20%E7%94%B5%E7%82%92%E9%94%85%20%E6%95%99%E7%A8%8B",
           "videoSource": "search"
         }
       ]
@@ -67,47 +68,47 @@
       "accent": "#506b49",
       "dishes": [
         {
-          "id": "v15",
-          "name": "青椒土豆丝",
+          "id": "v14",
+          "name": "韭菜炒豆干",
           "ingredients": [
-            "土豆",
-            "青椒",
-            "蒜"
+            "韭菜",
+            "香干",
+            "红椒"
           ],
-          "minutes": 12,
+          "minutes": 10,
           "difficulty": "简单",
-          "note": "清爽版本，不放醋也好吃",
-          "videoUrl": "https://search.bilibili.com/all?keyword=%E9%9D%92%E6%A4%92%E5%9C%9F%E8%B1%86%E4%B8%9D%20%E7%94%B5%E7%82%92%E9%94%85%20%E6%95%99%E7%A8%8B",
+          "note": "韭菜最后放，断生即出锅",
+          "videoUrl": "https://search.bilibili.com/all?keyword=%E9%9F%AD%E8%8F%9C%E7%82%92%E8%B1%86%E5%B9%B2%20%E7%94%B5%E7%82%92%E9%94%85%20%E6%95%99%E7%A8%8B",
           "videoSource": "search"
         },
         {
-          "id": "v22",
-          "name": "酸辣白菜",
+          "id": "v10",
+          "name": "红烧茄子",
           "ingredients": [
-            "白菜",
-            "干辣椒",
-            "香醋",
-            "蒜"
-          ],
-          "minutes": 12,
-          "difficulty": "简单",
-          "note": "酸辣开胃，配米饭刚好",
-          "videoUrl": "https://search.bilibili.com/all?keyword=%E9%85%B8%E8%BE%A3%E7%99%BD%E8%8F%9C%20%E7%94%B5%E7%82%92%E9%94%85%20%E6%95%99%E7%A8%8B",
-          "videoSource": "search"
-        },
-        {
-          "id": "v09",
-          "name": "家常豆腐",
-          "ingredients": [
-            "北豆腐",
+            "茄子",
             "青椒",
-            "木耳",
-            "豆瓣酱"
+            "蒜",
+            "生抽"
           ],
-          "minutes": 20,
+          "minutes": 22,
           "difficulty": "中等",
-          "note": "豆腐煎出硬壳再烧，不散",
-          "videoUrl": "https://search.bilibili.com/all?keyword=%E5%AE%B6%E5%B8%B8%E8%B1%86%E8%85%90%20%E7%94%B5%E7%82%92%E9%94%85%20%E6%95%99%E7%A8%8B",
+          "note": "茄子撒盐杀水，省油一半",
+          "videoUrl": "https://search.bilibili.com/all?keyword=%E7%BA%A2%E7%83%A7%E8%8C%84%E5%AD%90%20%E7%94%B5%E7%82%92%E9%94%85%20%E6%95%99%E7%A8%8B",
+          "videoSource": "search"
+        },
+        {
+          "id": "v29",
+          "name": "红烧冬瓜",
+          "ingredients": [
+            "冬瓜",
+            "蒜",
+            "生抽",
+            "小葱"
+          ],
+          "minutes": 18,
+          "difficulty": "简单",
+          "note": "冬瓜烧到半透明，吸满酱汁",
+          "videoUrl": "https://search.bilibili.com/all?keyword=%E7%BA%A2%E7%83%A7%E5%86%AC%E7%93%9C%20%E7%94%B5%E7%82%92%E9%94%85%20%E6%95%99%E7%A8%8B",
           "videoSource": "search"
         }
       ]
@@ -120,47 +121,48 @@
       "accent": "#a87b32",
       "dishes": [
         {
-          "id": "s01",
-          "name": "番茄鸡蛋汤",
+          "id": "s28",
+          "name": "萝卜羊肉汤",
           "ingredients": [
+            "羊肉",
+            "白萝卜",
+            "姜",
+            "白胡椒"
+          ],
+          "minutes": 80,
+          "difficulty": "中等",
+          "note": "白胡椒多放一点，暖到胃里",
+          "videoUrl": "https://search.bilibili.com/all?keyword=%E8%90%9D%E5%8D%9C%E7%BE%8A%E8%82%89%E6%B1%A4%20%E7%94%B5%E7%82%92%E9%94%85%20%E6%95%99%E7%A8%8B",
+          "videoSource": "search"
+        },
+        {
+          "id": "s22",
+          "name": "大酱汤",
+          "ingredients": [
+            "嫩豆腐",
+            "西葫芦",
+            "土豆",
+            "大酱"
+          ],
+          "minutes": 25,
+          "difficulty": "中等",
+          "note": "大酱先化开，汤才不结块",
+          "videoUrl": "https://search.bilibili.com/all?keyword=%E5%A4%A7%E9%85%B1%E6%B1%A4%20%E7%94%B5%E7%82%92%E9%94%85%20%E6%95%99%E7%A8%8B",
+          "videoSource": "search"
+        },
+        {
+          "id": "s10",
+          "name": "番茄牛肉汤",
+          "ingredients": [
+            "牛肉片",
             "番茄",
-            "鸡蛋",
-            "小葱"
+            "洋葱",
+            "香菜"
           ],
-          "minutes": 10,
-          "difficulty": "简单",
-          "note": "最家常的一碗，酸甜暖胃",
-          "videoUrl": "https://search.bilibili.com/all?keyword=%E7%95%AA%E8%8C%84%E9%B8%A1%E8%9B%8B%E6%B1%A4%20%E7%94%B5%E7%82%92%E9%94%85%20%E6%95%99%E7%A8%8B",
-          "videoSource": "search"
-        },
-        {
-          "id": "s09",
-          "name": "海带排骨汤",
-          "ingredients": [
-            "排骨",
-            "海带结",
-            "姜",
-            "料酒"
-          ],
-          "minutes": 50,
+          "minutes": 40,
           "difficulty": "中等",
-          "note": "海带提前泡发，咸味才不重",
-          "videoUrl": "https://search.bilibili.com/all?keyword=%E6%B5%B7%E5%B8%A6%E6%8E%92%E9%AA%A8%E6%B1%A4%20%E7%94%B5%E7%82%92%E9%94%85%20%E6%95%99%E7%A8%8B",
-          "videoSource": "search"
-        },
-        {
-          "id": "s11",
-          "name": "莲藕排骨汤",
-          "ingredients": [
-            "排骨",
-            "莲藕",
-            "姜",
-            "红枣"
-          ],
-          "minutes": 70,
-          "difficulty": "中等",
-          "note": "藕选粉藕，炖出来才绵",
-          "videoUrl": "https://search.bilibili.com/all?keyword=%E8%8E%B2%E8%97%95%E6%8E%92%E9%AA%A8%E6%B1%A4%20%E7%94%B5%E7%82%92%E9%94%85%20%E6%95%99%E7%A8%8B",
+          "note": "番茄先炒出沙，汤才红亮",
+          "videoUrl": "https://search.bilibili.com/all?keyword=%E7%95%AA%E8%8C%84%E7%89%9B%E8%82%89%E6%B1%A4%20%E7%94%B5%E7%82%92%E9%94%85%20%E6%95%99%E7%A8%8B",
           "videoSource": "search"
         }
       ]
