@@ -6,10 +6,10 @@
 | 项目类型 | 个人每日菜谱推荐网站 |
 | 技术方向 | GitHub Actions + GitHub Pages + 静态前端 |
 | 本地目录 | `C:\Users\phoenix\Documents\daily-wok` |
-| 当前状态 | 已推送至 GitHub `hugo1715/daily-menu`（main @ `87e70ff`）；Pages 与首次 Actions 运行待配置 |
+| 当前状态 | ✅ 已上线：`https://hugo1715.github.io/daily-menu/`（Actions 首次运行 build + deploy 均成功） |
 | 远程仓库 | `git@github.com:hugo1715/daily-menu.git`（SSH；本机 HTTPS 到 github.com 被阻断） |
-| 预期站点 | `https://hugo1715.github.io/daily-menu/` |
-| 文档版本 | 2026-11-08 更新（本地重写验收 + 已推送 GitHub） |
+| 线上站点 | `https://hugo1715.github.io/daily-menu/` |
+| 文档版本 | 2026-11-08 更新（本地重写验收 → 推送 GitHub → Pages 上线验收通过） |
 | 文档用途 | 交接项目背景、完成情况、风险与后续动作 |
 
 > **与上一版的差别**：上一版记录“代码稿已准备但可能在 `setup-project.ps1` 里丢失”。
@@ -174,6 +174,16 @@ daily-wok/
 | 读取失败态 | ✅ 404 时显示“菜单读取失败，请稍后刷新页面重试”+ 排查提示 | 状态截图 |
 | 视频链接 | ⚠️ 链接格式与 URL 编码已校验，**未逐条点开** | `today.json` 中 `videoUrl` |
 
+### 线上验收（Pages 已上线后复核）
+
+| 验收项 | 结果 | 证据 |
+|---|---|---|
+| Actions 首次运行 | ✅ run #1 `build` + `deploy` 均 success | `workflow_dispatch`，耗时约 33 秒 |
+| 站点首页 | ✅ HTTP 200 `https://hugo1715.github.io/daily-menu/` | 直接抓取 |
+| 线上 `data/today.json` | ✅ HTTP 200，`date=2026-11-08`、`mode=reuse`、3/3/3 | 直接抓取 |
+| 线上渲染 | ✅ 无头浏览器截图与本地截图**逐字节一致**（同一份数据、同一套样式） | `live-desktop.png` |
+| 生成结果回写 | ✅ `提交生成结果` 步骤执行成功（当天数据无变化，按设计跳过 commit） | Actions 步骤日志 |
+
 ## 2.4 当前进度
 
 | 阶段 | 状态 | 说明 |
@@ -187,21 +197,21 @@ daily-wok/
 | 本地文件生成 | 已完成 | 全部文件落盘 |
 | 本地预览 | 已完成 | `npm run preview` |
 | GitHub 仓库 | ✅ 已完成 | `hugo1715/daily-menu`，`main` 已推送（实际仓库名是 `daily-menu`，不是约定的 `daily-wok`） |
-| GitHub Pages | **未开始** | 需在仓库设置里把 Source 设为 GitHub Actions |
-| 首次 Actions 运行 | **未开始** | 需手动 Run workflow |
-| 线上验收 | **未开始** | 尚无公开地址 |
+| GitHub Pages | ✅ 已完成 | Source = GitHub Actions，站点已发布 |
+| 首次 Actions 运行 | ✅ 已完成 | run #1，build + deploy 均 success |
+| 线上验收 | ✅ 已完成（待次日复核） | 站点 200、today.json 数据正确、渲染与本地一致 |
 
 ## 2.5 当前存在的问题
 
-### P0：Pages 发布源与 Actions 权限尚未配置
+### P0：无（站点已上线）
 
-仓库已推送成功，但下面三件事没做，站点不会上线：
+三项配置均已完成并验证：
 
-1. `Settings → Pages → Source` 设为 **GitHub Actions**（否则没有发布源，页面 404）；
-2. `Settings → Actions → General → Workflow permissions` 设为 **Read and write**（否则工作流无法把生成结果 commit 回仓库）；
-3. `Actions → Daily Menu Build and Deploy → Run workflow` 手动跑一次。
+1. `Settings → Pages → Source = GitHub Actions` —— 站点已发布，首页与 `data/today.json` 均 200；
+2. `Settings → Actions → General → Workflow permissions = Read and write` —— 「提交生成结果」步骤执行成功；
+3. 手动 `Run workflow` —— run #1 的 `build` 与 `deploy` 两个 job 均 success。
 
-**这是当前唯一的阻塞点**，只能由仓库所有者在网页上操作。
+唯一待观察项：**次日（2026-11-09）北京时间 00:05 的定时任务**是否自动触发、是否自动 commit 新菜单并重新部署。
 
 ### P1：本机没有可用的 Node.js / npm
 
@@ -277,7 +287,7 @@ GitHub `schedule` 可能延迟数分钟。页面已处理：数据日期落后�
 - [x] 检查视频入口链接格式（未逐条点开）
 - [ ] **安装 Node LTS 到系统 PATH**（仅本地手动运行时需要）
 
-## 3.2 第二优先级：发布到 GitHub Pages（进行中）
+## 3.2 第二优先级：发布到 GitHub Pages（✅ 已完成）
 
 - [x] 在 GitHub 新建 **Public** 仓库（实际名字：`daily-menu`）
 - [x] 本地初始化、提交并推送（`main`，commit `87e70ff`，15 个文件）
@@ -291,22 +301,22 @@ GitHub `schedule` 可能延迟数分钟。页面已处理：数据日期落后�
   git push -u origin main
   ```
 
-- [ ] `Settings → Pages`：Source 选 **GitHub Actions**
-- [ ] `Settings → Actions → General`：Workflow permissions 选 **Read and write permissions**
-- [ ] `Actions → Daily Menu Build and Deploy → Run workflow` 手动跑一次
-- [ ] 确认 `build` 与 `deploy` 两个 job 都成功
-- [ ] 打开 `https://hugo1715.github.io/daily-menu/` 验收
+- [x] `Settings → Pages`：Source 选 **GitHub Actions**
+- [x] `Settings → Actions → General`：Workflow permissions 选 **Read and write permissions**
+- [x] `Actions → Daily Menu Build and Deploy → Run workflow` 手动跑一次
+- [x] 确认 `build` 与 `deploy` 两个 job 都成功（run #1）
+- [x] 打开 `https://hugo1715.github.io/daily-menu/` 验收
 
 ## 3.3 第三优先级：上线验收
 
-- [ ] 页面正常显示 3 荤、3 素、3 汤
-- [ ] 每道菜都有视频入口，点击能在新窗口打开 B 站
-- [ ] 手机宽度下卡片单列，桌面三列
-- [ ] `today.json` 的 `date` 等于北京时间当天
-- [ ] 同类当天无重复菜品
-- [ ] 最近 9 天历史无明显重复
-- [ ] 页面显示菜单生成时间
-- [ ] 第二天再打开，确认自动更新生效（且 Actions 有新的 commit）
+- [x] 页面正常显示 3 荤、3 素、3 汤（截图与本地逐字节一致）
+- [ ] 每道菜都有视频入口，点击能在新窗口打开 B 站（入口已渲染，未逐条点击验证）
+- [x] 手机宽度下卡片单列，桌面三列（本地等价验证 + 线上同源样式）
+- [x] `today.json` 的 `date` 等于北京时间当天（2026-11-08）
+- [x] 同类当天无重复菜品
+- [ ] 最近 9 天历史无明显重复（目前只有 1 天数据，需积累几天后再看）
+- [x] 页面显示菜单生成时间
+- [ ] **第二天再打开**，确认定时任务自动更新（北京时间 00:05）
 
 ## 3.4 后续优化
 
@@ -371,14 +381,16 @@ $env:DAILY_WOK_DATE = '2026-11-01'; node scripts/generate-daily.mjs; Remove-Item
 
 项目需求、技术方案、90 道菜品、生成逻辑、页面与工作流**均已落地并本地验收通过**，不再是“只有设计稿”的状态。
 
-当前阻塞点已从“没有仓库”缩小到**仓库设置**，都必须用 GitHub 网页操作：
+项目已**完整上线**：本地生成与页面验收通过 → 推送 GitHub → Pages 发布 → 线上验收通过。
 
-1. Pages 发布源设为 GitHub Actions；
-2. Actions 授予读写权限；
-3. 手动跑一次工作流；
-4. 线上验收：`https://hugo1715.github.io/daily-menu/`。
+访问地址：**<https://hugo1715.github.io/daily-menu/>**
 
-配置完成后建议第二天再验证一次定时任务（UTC 16:05 触发），确认自动 commit 与重新部署都正常；视觉优化与扩充菜品放到线上稳定之后再做。
+日常状态：每天北京时间 00:05 由 Actions 自动生成新菜单、提交回仓库并重新部署；同一天所有人看到同一份。
+不再需要任何手工操作，除非要改菜谱、改样式或改去重周期。
+
+剩余待观察：次日定时任务是否按预期自动触发（若 Actions 里出现新的 `chore: 更新 2026-11-09 菜单` 提交，即完全闭环）。
+
+可选优化见 §3.4：补固定视频链接、扩充菜品库、页面加“最近 7 天历史”等，都不影响当前使用。
 
 本地若还需要手动生成，先装 Node LTS 20/22（当前系统 PATH 里没有 Node，本次验收用的是 DSH 内置运行时）。
 
