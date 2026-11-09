@@ -5,6 +5,16 @@ on:
     # UTC 16:05 = 北京时间次日 00:05（GitHub 的 schedule 可能延迟数分钟）
     - cron: '5 16 * * *'
   workflow_dispatch:
+  # 改了页面/脚本/菜品时自动重新部署；
+  # 故意不包含 public/data 与 data/history.json，避免机器人自身的提交造成循环触发
+  push:
+    branches: [main]
+    paths:
+      - 'public/index.html'
+      - 'scripts/**'
+      - 'data/dishes.psv'
+      - 'data/categories.json'
+      - '.github/workflows/daily-menu.yml'
 
 permissions:
   contents: write
