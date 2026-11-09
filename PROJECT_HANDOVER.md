@@ -152,6 +152,16 @@ daily-wok/
 - **校验**：表头、字段数、id 重复、分类合法性、`minutes` 数字，任一不通过直接报错退出（Actions 会红）；
 - **补生成**：支持 `DAILY_WOK_DATE=2026-11-01` 环境变量指定日期（补跑漏掉的某天、或做测试）。
 
+### 2026-11-09 增量优化（本轮）
+
+| 优化 | 实现 | 验收 |
+|---|---|---|
+| 页面「最近 7 天」区块 | 生成器在 `today.json` 里输出 `recent`（前 7 天、按日期倒序、只含菜名）；页面底部渲染「日期 + 荤/素/汤三行」，窄屏自动转单列 | 桌面/移动截图，`recent` 字段与历史一致 |
+| 高频菜固定视频 | `dishes.psv` 为 **12 道菜**填入 `videoUrl`，页面按钮自动变「看教学视频」 | 12 条链接均经 B 站 API 核实标题匹配、`code=0` |
+| 定时任务提交信息 | 改用菜单实际日期（原为 UTC 日期，00:05 生成时会写成前一天） | 下次自动运行可验证 |
+
+已配置固定视频的 12 道菜：青椒肉丝、番茄炒蛋、可乐鸡翅、宫保鸡丁、红烧肉、白灼虾、蒜蓉粉丝虾、手撕包菜、醋溜土豆丝、红烧茄子、番茄鸡蛋汤、紫菜蛋花汤。
+
 ## 2.3 本地验收记录
 
 执行环境：Windows 10/11 + Windows PowerShell 5.1；Node 用 DSH 内置运行时 v24.21.0（见 §2.5 P1）。
@@ -320,10 +330,10 @@ GitHub `schedule` 可能延迟数分钟。页面已处理：数据日期落后�
 
 ## 3.4 后续优化
 
-- [ ] 为部分菜品补固定 B 站视频链接
+- [x] 为部分菜品补固定 B 站视频链接（已补 12 道，均核实）
 - [ ] 增加链接失效检查（可用 Actions 定时 curl 检查）
 - [ ] 菜品库扩到 45 或 90 道/类
-- [ ] 页面增加“最近 7 天历史”
+- [x] 页面增加“最近 7 天历史”
 - [ ] 增加分类筛选 / 随机再摇一次（前端本地摇签，不影响当天记录）
 - [ ] 若要个性化，迁移 Cloudflare Workers + D1
 - [ ] 补一版自动化测试（当前 12 天去重模拟是临时脚本，可固化为 `scripts/selftest.mjs`）
@@ -422,5 +432,6 @@ $env:DAILY_WOK_DATE = '2026-11-01'; node scripts/generate-daily.mjs; Remove-Item
 | 去重周期 | `data/history.json` 的 `windowDays`（需保证每类菜品数 ≥ 3 × windowDays） |
 | 每天几点生成 | `.github/workflows/daily-menu.yml` 的 `cron`（UTC） |
 | 每类推荐几道 | `scripts/generate-daily.mjs` 的 `PICK_PER_CATEGORY` |
+| 最近 7 天展示几天 | `scripts/generate-daily.mjs` 的 `RECENT_DAYS` |
 | 分类标题/颜色 | `data/categories.json` |
 | 重挑今天的菜 | 删掉 `history.json` 里当天记录再跑生成 |

@@ -35,11 +35,12 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          MENU_DATE=$(node -p "JSON.parse(require('fs').readFileSync('public/data/today.json','utf8')).date")
           git add public/data/today.json data/history.json
           if git diff --cached --quiet; then
             echo "本次没有数据变化，跳过提交"
           else
-            git commit -m "chore: 更新 $(date -u +%Y-%m-%d) 菜单"
+            git commit -m "chore: 更新 ${MENU_DATE} 菜单"
             git push
           fi
 

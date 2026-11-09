@@ -286,6 +286,61 @@
 
   .video svg { flex: none; }
 
+  /* ---------- 最近 7 天 ---------- */
+  .history { margin-top: 52px; --accent: var(--ink); }
+
+  .history-list {
+    list-style: none;
+    margin: 14px 0 0;
+    padding: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .history-list li {
+    display: grid;
+    grid-template-columns: 92px minmax(0, 1fr);
+    gap: 18px;
+    padding: 13px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .h-date {
+    font-variant-numeric: tabular-nums;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    color: var(--ink);
+  }
+
+  .h-date small {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    color: var(--ink-soft);
+  }
+
+  .h-items { display: grid; gap: 3px; }
+
+  .h-line {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+  }
+
+  .h-line .hdot {
+    width: 6px;
+    height: 6px;
+    flex: none;
+    border-radius: 50%;
+    transform: translateY(-2px);
+  }
+
+  .h-line b { font-weight: 700; color: var(--ink); }
+
   /* ---------- 骨架屏 ---------- */
   .skeleton { display: grid; gap: 16px; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 18px; }
 
@@ -331,6 +386,10 @@
     .cat-head { flex-wrap: wrap; }
     .cat-head .note { margin-left: 0; width: 100%; }
     .card h3 { font-size: 20px; }
+    .history-list li { grid-template-columns: 1fr; gap: 4px; }
+    .h-date { display: flex; align-items: baseline; gap: 8px; }
+    .h-date small { display: inline; }
+    .h-line { font-size: 13px; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -361,6 +420,15 @@
   <main class="board" id="board" aria-live="polite">
     <div class="skeleton"><i></i><i></i><i></i></div>
   </main>
+
+  <section class="history" id="history" hidden>
+    <div class="cat-head">
+      <h2>最近 7 天</h2>
+      <span class="en">RECENT</span>
+      <span class="note">前几天的菜单，按日期倒序</span>
+    </div>
+    <ol class="history-list" id="history-list"></ol>
+  </section>
 
   <footer class="site">
     <div>菜单每天北京时间 00:05 自动生成，同一天内所有人看到的是同一份。</div>
@@ -437,6 +505,35 @@
       </article>`;
   }
 
+  function renderRecent(recent, categories) {
+    const section = document.getElementById('history');
+    const list = document.getElementById('history-list');
+    if (!section || !list) return;
+
+    if (!Array.isArray(recent) || recent.length === 0) {
+      section.hidden = true;
+      return;
+    }
+
+    list.innerHTML = recent.map((day) => {
+      const lines = categories.map((cat) => {
+        const names = (day.items && day.items[cat.key]) || [];
+        if (!names.length) return '';
+        return `<div class="h-line">
+          <i class="hdot" style="background:${cat.accent || ACCENT[cat.key] || 'var(--ink)'}"></i>
+          <span><b>${escapeHtml(cat.label)}</b> ${names.map(escapeHtml).join('、')}</span>
+        </div>`;
+      }).join('');
+
+      return `<li>
+        <div class="h-date">${escapeHtml(day.date.slice(5).replace('-', '.'))}<small>${weekday(day.date)}</small></div>
+        <div class="h-items">${lines}</div>
+      </li>`;
+    }).join('');
+
+    section.hidden = false;
+  }
+
   function render(data) {
     board.innerHTML = data.categories.map((cat) => `
       <section class="cat" style="--accent:${cat.accent || ACCENT[cat.key] || 'var(--ink)'}">
@@ -454,6 +551,8 @@
       month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit',
     });
     footMeta.textContent = `本菜单生成于 ${time} · 去重窗口 ${data.windowDays} 天 · 共 ${data.categories.reduce((n, c) => n + c.dishes.length, 0)} 道菜`;
+
+    renderRecent(data.recent, data.categories);
 
     const today = beijingToday();
     if (data.date === today) {

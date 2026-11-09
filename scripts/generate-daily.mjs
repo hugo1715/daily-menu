@@ -22,6 +22,7 @@ const DATA_DIR = path.join(ROOT, 'data');
 const PUBLIC_DIR = path.join(ROOT, 'public');
 const TZ = 'Asia/Shanghai';
 const PICK_PER_CATEGORY = 3;
+const RECENT_DAYS = 7;
 const MAX_HISTORY_DAYS = 400;
 const DEFAULT_WINDOW_DAYS = 9;
 const PSV_FIELDS = ['id', 'name', 'category', 'ingredients', 'minutes', 'difficulty', 'note', 'videoUrl'];
@@ -263,12 +264,29 @@ async function main() {
 
   // 复用当天记录时，保留最初的生成时间，避免页面上的“生成于”被重跑改写
   const generatedAt = mode === 'reuse' && existing?.generatedAt ? existing.generatedAt : new Date().toISOString();
+
+  // 最近 7 天（不含今天）的菜名，供页面「最近 7 天」区块使用
+  const recent = history.days
+    .filter((day) => day && typeof day.date === 'string' && day.date !== today && diffDays(today, day.date) > 0)
+    .sort((a, b) => (a.date < b.date ? 1 : -1))
+    .slice(0, RECENT_DAYS)
+    .map((day) => ({
+      date: day.date,
+      items: Object.fromEntries(
+        categories.map((c) => [
+          c.key,
+          (day.picks?.[c.key] ?? []).map((id) => byId.get(id)?.name).filter(Boolean),
+        ]),
+      ),
+    }));
+
   const payload = {
     date: today,
     timezone: TZ,
     generatedAt,
     windowDays,
     mode,
+    recent,
     categories: categories.map((c) => ({
       key: c.key,
       label: c.label,
