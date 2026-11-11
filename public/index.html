@@ -221,6 +221,14 @@
     display: block;
   }
 
+  .card-media .media-frame {
+    position: absolute;
+    inset: 9px;
+    border: 1px solid rgba(36, 31, 27, .10);
+    border-radius: 6px;
+    pointer-events: none;
+  }
+
   article.card:hover .card-media::before { transform: translateY(-3px) scale(1.04); }
 
   /* ---------- 卡片 ---------- */
@@ -544,7 +552,7 @@
   function cardHtml(dish, index, cat) {
     const tags = dish.ingredients.map((item) => `<span>${escapeHtml(item)}</span>`).join(' · ');
     const glyph = (dish.name || '菜').slice(0, 1);
-    const media = `<div class="card-media" style="--h:${hueOf(dish.id, cat && cat.key)}" data-glyph="${escapeHtml(glyph)}">${
+    const media = `<div class="card-media" style="--h:${hueOf(dish.id, cat && cat.key)}" data-glyph="${escapeHtml(glyph)}"><span class="media-frame"></span>${
       dish.imageUrl
         ? `<img src="${escapeHtml(dish.imageUrl)}" alt="${escapeHtml(dish.name)}" loading="lazy" decoding="async" onerror="this.remove()" />`
         : ''

@@ -48,7 +48,8 @@ daily-wok/
 ├─ data/
 │  ├─ categories.json      # 三个分类的标题、英文名、说明、主题色
 │  ├─ dishes.psv           # 菜品库：1 行表头 + 90 行菜品，8 字段
-│  └─ history.json         # 推荐历史（生成脚本自动维护）
+│  ├─ history.json         # 推荐历史（生成脚本自动维护）
+│  └─ images.json          # 可选：菜品配图 { "菜品id": "图片URL" }
 ├─ scripts/
 │  ├─ generate-daily.mjs   # 每日菜单生成器
 │  └─ preview.mjs          # 本地静态预览服务器
@@ -60,6 +61,19 @@ daily-wok/
 ├─ setup-project.ps1       # 脚手架与自检脚本
 └─ package.json
 ```
+
+### 卡片图区
+
+每张菜卡顶部有一个 **16:9**、圆角、带细内框的图区：
+
+- 默认是 **CSS 生成的渐变插画**（按分类取色 + 菜品 id 微调色相，中间压一个菜名首字的淡色大字），不依赖网络、不会出现破图；
+- 想换成真实照片，在 `data/images.json` 里按菜品 id 配 URL 即可，例如：
+
+  ```json
+  { "m13": "https://example.com/hongshaorou.jpg", "s01": "https://example.com/fanqietang.jpg" }
+  ```
+
+  配了图的菜自动渲染 `<img>`（`object-fit: cover`，加载失败会自动退回渐变），没配的继续用插画。
 
 ### `dishes.psv` 字段
 
@@ -124,6 +138,7 @@ npm run preview         # 打开 http://127.0.0.1:8000
 |---|---|
 | 加菜 | 在 `data/dishes.psv` 追加行，`id` 不要重复，分类数量尽量保持均衡 |
 | 换某道菜的视频 | 填上该行的 `videoUrl`，页面会自动改成「看教学视频」 |
+| 给某道菜配照片 | 在 `data/images.json` 加 `"菜品id": "图片URL"`，卡片 16:9 图区自动换成真图 |
 | 调整去重周期 | 改 `data/history.json` 的 `windowDays`（每类菜品数 ≥ 3 × windowDays 才够用） |
 | 换生成时间 | 改 `.github/workflows/daily-menu.yml` 里的 `cron`（UTC 时间） |
 | 重挑今天的菜 | 删掉 `data/history.json` 里当天的记录，再跑一次生成 |
