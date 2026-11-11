@@ -174,6 +174,55 @@
     margin-top: 18px;
   }
 
+  /* ---------- 卡片图区（16:9） ---------- */
+  .card-media {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid hsl(var(--h) 24% 82% / .85);
+    background:
+      radial-gradient(115% 85% at 15% 6%, hsl(var(--h) 44% 85%) 0%, transparent 58%),
+      radial-gradient(95% 80% at 88% 96%, hsl(var(--h) 34% 66% / .75) 0%, transparent 62%),
+      linear-gradient(148deg, hsl(var(--h) 26% 94%) 0%, hsl(var(--h) 22% 86%) 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .55);
+  }
+
+  .card-media::before {
+    content: attr(data-glyph);
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    font-size: clamp(44px, 6.4vw, 72px);
+    font-weight: 800;
+    letter-spacing: .08em;
+    color: hsl(var(--h) 32% 24% / .17);
+    transform: translateY(-3px);
+    transition: transform .35s ease;
+    pointer-events: none;
+  }
+
+  .card-media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(135deg, rgba(255, 255, 255, .18) 0 1px, transparent 1px 6px);
+    mix-blend-mode: soft-light;
+    pointer-events: none;
+  }
+
+  .card-media img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  article.card:hover .card-media::before { transform: translateY(-3px) scale(1.04); }
+
   /* ---------- 卡片 ---------- */
   article.card {
     display: flex;
@@ -482,10 +531,27 @@
     return '';
   }
 
-  function cardHtml(dish, index) {
+  // 分类基色 + id 抖动，保证同一分类色调统一、每道菜又略有差别
+  const MEDIA_HUE = { meat: 14, veg: 96, soup: 36 };
+
+  function hueOf(id, categoryKey) {
+    const base = MEDIA_HUE[categoryKey] ?? 30;
+    let h = 0;
+    for (let i = 0; i < id.length; i += 1) h = (h * 31 + id.charCodeAt(i)) % 1000;
+    return base + (h % 24) - 12;
+  }
+
+  function cardHtml(dish, index, cat) {
     const tags = dish.ingredients.map((item) => `<span>${escapeHtml(item)}</span>`).join(' · ');
+    const glyph = (dish.name || '菜').slice(0, 1);
+    const media = `<div class="card-media" style="--h:${hueOf(dish.id, cat && cat.key)}" data-glyph="${escapeHtml(glyph)}">${
+      dish.imageUrl
+        ? `<img src="${escapeHtml(dish.imageUrl)}" alt="${escapeHtml(dish.name)}" loading="lazy" decoding="async" onerror="this.remove()" />`
+        : ''
+    }</div>`;
     return `
       <article class="card">
+        ${media}
         <div class="card-index">NO.0${index + 1}</div>
         <h3>${escapeHtml(dish.name)}</h3>
         <p class="note">${escapeHtml(dish.note || '')}</p>
@@ -542,7 +608,7 @@
           <span class="en">${escapeHtml(cat.en)}</span>
           <span class="note">${escapeHtml(cat.note)}</span>
         </div>
-        <div class="cards">${cat.dishes.map(cardHtml).join('')}</div>
+        <div class="cards">${cat.dishes.map((dish, i) => cardHtml(dish, i, cat)).join('')}</div>
       </section>`).join('');
 
     dateline.textContent = `${data.date.replaceAll('-', '.')} ${weekday(data.date)}`;

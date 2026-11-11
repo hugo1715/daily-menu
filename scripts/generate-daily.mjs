@@ -140,6 +140,16 @@ async function loadDishes() {
   return dishes;
 }
 
+async function loadImages() {
+  // data/images.json 可选：{ "m01": "https://…jpg" }，用于替换卡片的 16:9 占位插画
+  const file = path.join(DATA_DIR, 'images.json');
+  const map = await readJson(file, {});
+  if (!map || typeof map !== 'object' || Array.isArray(map)) {
+    throw new Error('data/images.json 应为 { "菜品id": "图片URL" } 形式的对象');
+  }
+  return map;
+}
+
 async function loadCategories() {
   const categories = await readJson(path.join(DATA_DIR, 'categories.json'));
   if (!Array.isArray(categories) || categories.length === 0) throw new Error('data/categories.json 应为非空数组');
@@ -202,7 +212,7 @@ function pickForCategory({ category, dishes, history, today, windowDays, seed })
   return chosen;
 }
 
-function buildDishView(dish) {
+function buildDishView(dish, imageUrl) {
   const keyword = `${dish.name} 电炒锅 教程`;
   const url = dish.videoUrl || bilibiliSearch(keyword);
   return {
@@ -214,6 +224,7 @@ function buildDishView(dish) {
     note: dish.note,
     videoUrl: url,
     videoSource: dish.videoUrl ? 'fixed' : 'search',
+    imageUrl: imageUrl ?? '',
   };
 }
 
@@ -223,6 +234,7 @@ async function main() {
   const dishes = await loadDishes();
   const categories = await loadCategories();
   const history = await loadHistory();
+  const images = await loadImages();
   // DAILY_WOK_DATE 仅用于测试/补生成，正常运行时取北京时间当天
   const today = process.env.DAILY_WOK_DATE?.trim() || todayInTz();
   if (!/^\d{4}-\d{2}-\d{2}$/.test(today)) throw new Error(`日期格式应为 YYYY-MM-DD，实际为：${today}`);
@@ -293,7 +305,7 @@ async function main() {
       en: c.en ?? c.key.toUpperCase(),
       note: c.note ?? '',
       accent: c.accent ?? '#b7472f',
-      dishes: picks[c.key].map(buildDishView),
+      dishes: picks[c.key].map((dish) => buildDishView(dish, images[dish.id])),
     })),
   };
 
