@@ -10,3 +10,6 @@ Thumbs.db
 
 # 本地预览产物
 .preview/
+
+# 生成产物（由 scripts/generate-daily.mjs 产出，随部署一起打包）
+public/data/dishes.json

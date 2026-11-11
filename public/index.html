@@ -167,6 +167,47 @@
     color: var(--ink-soft);
   }
 
+  .reroll {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 10px 3px 8px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink-soft);
+    font-family: inherit;
+    font-size: 12px;
+    letter-spacing: .04em;
+    cursor: pointer;
+    transition: color .16s ease, border-color .16s ease, background .16s ease;
+  }
+
+  .reroll svg { transition: transform .35s ease; }
+
+  .reroll:hover,
+  .reroll:focus-visible {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: #fffdf8;
+  }
+
+  .reroll:hover svg { transform: rotate(180deg); }
+
+  html.no-pool .reroll,
+  html.no-pool .card-media .swap { display: none; }
+
+  .swap-hint {
+    display: none;
+    margin-top: 12px;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+  }
+
+  .swap-hint.show { display: block; }
+
+  .swap-hint b { color: var(--ink); font-weight: 700; }
+
   .cards {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -228,6 +269,48 @@
     border-radius: 6px;
     pointer-events: none;
   }
+
+  .card-media .swap {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 2;
+    width: 26px;
+    height: 26px;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 1px solid rgba(36, 31, 27, .14);
+    border-radius: 50%;
+    background: rgba(255, 253, 248, .86);
+    color: var(--ink-soft);
+    cursor: pointer;
+    backdrop-filter: blur(2px);
+    opacity: 0;
+    transform: translateY(-2px);
+    transition: opacity .18s ease, transform .18s ease, color .18s ease, border-color .18s ease;
+  }
+
+  article.card:hover .card-media .swap,
+  .card-media .swap:focus-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  .card-media .swap:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .card-media .swap svg { transition: transform .4s ease; }
+  .card-media .swap:hover svg { transform: rotate(150deg); }
+
+  @keyframes cardIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  .card--enter { animation: cardIn .3s ease both; }
 
   article.card:hover .card-media::before { transform: translateY(-3px) scale(1.04); }
 
@@ -434,6 +517,7 @@
   /* ---------- 响应式 ---------- */
   @media (max-width: 900px) {
     .cards, .skeleton { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .card-media .swap { opacity: 1; transform: none; }
   }
 
   @media (max-width: 620px) {
@@ -442,6 +526,7 @@
     .cards, .skeleton { grid-template-columns: 1fr; }
     .cat-head { flex-wrap: wrap; }
     .cat-head .note { margin-left: 0; width: 100%; }
+    .cat-head .reroll { margin-left: auto; }
     .card h3 { font-size: 20px; }
     .history-list li { grid-template-columns: 1fr; gap: 4px; }
     .h-date { display: flex; align-items: baseline; gap: 8px; }
@@ -472,6 +557,7 @@
       <span class="dot"></span>
       <span id="status-text">正在读取今天的菜单…</span>
     </div>
+    <div class="swap-hint" id="swap-hint"></div>
   </header>
 
   <main class="board" id="board" aria-live="polite">
@@ -512,6 +598,17 @@
 
   let lastGeneratedAt = null;
   let retryTimer = null;
+
+  const POOL_URL = './data/dishes.json';
+  const swapHint = document.getElementById('swap-hint');
+
+  let pool = null;            // { meat: [dish], veg: [...], soup: [...] }
+  let poolPromise = null;
+  let cats = {};              // 分类元信息
+  let shown = {};             // 当前显示的三道菜
+  let recentIds = {};         // 最近 7 天用过的 id，换菜时避开
+  let swapCount = 0;
+  let currentDate = null;
 
   const beijingToday = () => new Intl.DateTimeFormat('en-CA', {
     timeZone: 'Asia/Shanghai', year: 'numeric', month: '2-digit', day: '2-digit',
@@ -556,9 +653,13 @@
       dish.imageUrl
         ? `<img src="${escapeHtml(dish.imageUrl)}" alt="${escapeHtml(dish.name)}" loading="lazy" decoding="async" onerror="this.remove()" />`
         : ''
-    }</div>`;
+    }<button class="swap" type="button" data-action="swap" data-cat="${cat.key}" data-idx="${index}" title="换一道${escapeHtml(cat.label)}" aria-label="换一道${escapeHtml(cat.label)}">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M20.5 12a8.5 8.5 0 1 1-2.5-6"/><path d="M20.5 3.5V9h-5.4"/>
+        </svg>
+      </button></div>`;
     return `
-      <article class="card">
+      <article class="card" data-cat="${cat.key}" data-idx="${index}">
         ${media}
         <div class="card-index">NO.0${index + 1}</div>
         <h3>${escapeHtml(dish.name)}</h3>
@@ -608,13 +709,123 @@
     section.hidden = false;
   }
 
+  async function loadPool() {
+    if (pool) return pool;
+    if (!poolPromise) {
+      poolPromise = fetch(`${POOL_URL}?v=${Date.now()}`, { cache: 'no-store' })
+        .then((res) => {
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          return res.json();
+        })
+        .then((list) => {
+          const grouped = {};
+          list.forEach((dish) => {
+            if (!grouped[dish.category]) grouped[dish.category] = [];
+            grouped[dish.category].push(dish);
+          });
+          pool = grouped;
+          return pool;
+        })
+        .catch((err) => {
+          console.warn('[daily-wok] 候选菜库加载失败：', err);
+          document.documentElement.classList.add('no-pool');
+          return null;
+        });
+    }
+    return poolPromise;
+  }
+
+  function pickReplacement(catKey) {
+    const list = (pool && pool[catKey]) || [];
+    const used = new Set((shown[catKey] || []).map((d) => d.id));
+    const recent = recentIds[catKey] || new Set();
+    let candidates = list.filter((d) => !used.has(d.id) && !recent.has(d.id));
+    if (!candidates.length) candidates = list.filter((d) => !used.has(d.id));
+    if (!candidates.length) return null;
+    return candidates[Math.floor(Math.random() * candidates.length)];
+  }
+
+  function replaceCardAt(catKey, index, dish) {
+    const old = board.querySelector(`.card[data-cat="${catKey}"][data-idx="${index}"]`);
+    if (!old) return;
+    const holder = document.createElement('div');
+    holder.innerHTML = cardHtml(dish, index, cats[catKey]).trim();
+    const fresh = holder.firstElementChild;
+    fresh.classList.add('card--enter');
+    fresh.addEventListener('animationend', () => fresh.classList.remove('card--enter'), { once: true });
+    old.replaceWith(fresh);
+  }
+
+  function updateHint(message) {
+    if (!swapHint) return;
+    if (message) {
+      swapHint.innerHTML = escapeHtml(message);
+      swapHint.classList.add('show');
+      return;
+    }
+    if (swapCount > 0) {
+      swapHint.innerHTML = `已临时替换 <b>${swapCount}</b> 道菜 · 只影响你这台设备，刷新页面恢复今日菜单`;
+      swapHint.classList.add('show');
+    } else {
+      swapHint.innerHTML = '';
+      swapHint.classList.remove('show');
+    }
+  }
+
+  async function onSwap(catKey, index) {
+    const ready = await loadPool();
+    if (!ready) { updateHint('候选菜库没有加载成功，稍后再试'); return; }
+    const dish = pickReplacement(catKey);
+    if (!dish) { updateHint('这一类里暂时没有别的菜可以换了'); return; }
+    shown[catKey][index] = dish;
+    replaceCardAt(catKey, index, dish);
+    swapCount += 1;
+    updateHint();
+  }
+
+  async function onReroll(catKey) {
+    const ready = await loadPool();
+    if (!ready) { updateHint('候选菜库没有加载成功，稍后再试'); return; }
+    let changed = 0;
+    for (let i = 0; i < 3; i += 1) {
+      const dish = pickReplacement(catKey);
+      if (!dish) break;
+      shown[catKey][i] = dish;
+      replaceCardAt(catKey, i, dish);
+      changed += 1;
+    }
+    if (!changed) { updateHint('这一类里暂时没有别的菜可以换了'); return; }
+    swapCount += changed;
+    updateHint();
+  }
+
   function render(data) {
+    cats = {};
+    shown = {};
+    recentIds = {};
+    data.categories.forEach((cat) => {
+      cats[cat.key] = cat;
+      shown[cat.key] = cat.dishes.slice();
+      recentIds[cat.key] = new Set((data.recentIds && data.recentIds[cat.key]) || []);
+    });
+    if (data.date !== currentDate) {
+      currentDate = data.date;
+      swapCount = 0;
+      updateHint();
+    }
+
     board.innerHTML = data.categories.map((cat) => `
       <section class="cat" style="--accent:${cat.accent || ACCENT[cat.key] || 'var(--ink)'}">
         <div class="cat-head">
           <h2>${escapeHtml(cat.label)}</h2>
           <span class="en">${escapeHtml(cat.en)}</span>
           <span class="note">${escapeHtml(cat.note)}</span>
+          <button class="reroll" type="button" data-action="reroll" data-cat="${cat.key}">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20.5 12a8.5 8.5 0 1 1-2.5-6"/><path d="M20.5 3.5V9h-5.4"/>
+            </svg>
+            换一换
+          </button>
         </div>
         <div class="cards">${cat.dishes.map((dish, i) => cardHtml(dish, i, cat)).join('')}</div>
       </section>`).join('');
@@ -667,6 +878,15 @@
       scheduleRetry();
     }
   }
+
+  board.addEventListener('click', (event) => {
+    const btn = event.target.closest('[data-action]');
+    if (!btn) return;
+    event.preventDefault();
+    const catKey = btn.dataset.cat;
+    if (btn.dataset.action === 'swap') onSwap(catKey, Number(btn.dataset.idx));
+    else if (btn.dataset.action === 'reroll') onReroll(catKey);
+  });
 
   load();
   setInterval(() => load({ silent: true }), REFRESH_MS);

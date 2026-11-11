@@ -292,6 +292,20 @@ async function main() {
       ),
     }));
 
+  // 最近 7 天的菜品 id（页面「换一换」时用来避开刚吃过的菜）
+  const recentIds = Object.fromEntries(
+    categories.map((c) => [
+      c.key,
+      [
+        ...new Set(
+          history.days
+            .filter((day) => day && typeof day.date === 'string' && day.date !== today && diffDays(today, day.date) > 0 && diffDays(today, day.date) <= RECENT_DAYS)
+            .flatMap((day) => day.picks?.[c.key] ?? []),
+        ),
+      ],
+    ]),
+  );
+
   const payload = {
     date: today,
     timezone: TZ,
@@ -299,6 +313,7 @@ async function main() {
     windowDays,
     mode,
     recent,
+    recentIds,
     categories: categories.map((c) => ({
       key: c.key,
       label: c.label,
@@ -311,6 +326,14 @@ async function main() {
 
   await mkdir(path.join(PUBLIC_DIR, 'data'), { recursive: true });
   await writeFile(path.join(PUBLIC_DIR, 'data', 'today.json'), `${JSON.stringify(payload, null, 2)}\n`, 'utf8');
+
+  // 页面的「换一换」需要候选池：输出全量菜品（含已解析的视频/图片地址）
+  const pool = dishes.map((dish, index) => ({
+    ...buildDishView(dish, images[dish.id]),
+    category: dish.category,
+    order: index,
+  }));
+  await writeFile(path.join(PUBLIC_DIR, 'data', 'dishes.json'), `${JSON.stringify(pool)}\n`, 'utf8');
 
   if (mode === 'fresh') {
     const entry = {
