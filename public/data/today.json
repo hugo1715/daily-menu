@@ -1,10 +1,30 @@
 {
-  "date": "2026-11-14",
+  "date": "2026-11-15",
   "timezone": "Asia/Shanghai",
-  "generatedAt": "2026-11-13T16:47:15.654Z",
+  "generatedAt": "2026-11-14T16:30:39.489Z",
   "windowDays": 9,
   "mode": "fresh",
   "recent": [
+    {
+      "date": "2026-11-14",
+      "items": {
+        "meat": [
+          "五花肉炒花菜",
+          "鱼香肉丝",
+          "滑蛋牛肉"
+        ],
+        "veg": [
+          "鱼香茄子",
+          "菠菜炒粉丝",
+          "蒜蓉西兰花"
+        ],
+        "soup": [
+          "鲫鱼豆腐汤",
+          "花生鸡爪汤",
+          "白萝卜牛腩汤"
+        ]
+      }
+    },
     {
       "date": "2026-11-13",
       "items": {
@@ -145,7 +165,10 @@
       "m03",
       "m19",
       "m24",
-      "m08"
+      "m08",
+      "m20",
+      "m06",
+      "m29"
     ],
     "veg": [
       "v15",
@@ -165,7 +188,10 @@
       "v16",
       "v27",
       "v01",
-      "v28"
+      "v28",
+      "v23",
+      "v18",
+      "v06"
     ],
     "soup": [
       "s01",
@@ -185,7 +211,10 @@
       "s23",
       "s25",
       "s30",
-      "s07"
+      "s07",
+      "s16",
+      "s24",
+      "s05"
     ]
   },
   "categories": [
@@ -197,50 +226,50 @@
       "accent": "#b7472f",
       "dishes": [
         {
-          "id": "m20",
-          "name": "五花肉炒花菜",
+          "id": "m07",
+          "name": "宫保鸡丁",
           "ingredients": [
-            "五花肉",
-            "有机花菜",
-            "蒜",
-            "干辣椒"
-          ],
-          "minutes": 22,
-          "difficulty": "简单",
-          "note": "花菜吸走猪油，比肉还抢手",
-          "videoUrl": "https://search.bilibili.com/all?keyword=%E4%BA%94%E8%8A%B1%E8%82%89%E7%82%92%E8%8A%B1%E8%8F%9C%20%E7%94%B5%E7%82%92%E9%94%85%20%E6%95%99%E7%A8%8B",
-          "videoSource": "search",
-          "imageUrl": ""
-        },
-        {
-          "id": "m06",
-          "name": "鱼香肉丝",
-          "ingredients": [
-            "猪里脊",
-            "胡萝卜",
-            "木耳",
-            "泡椒"
+            "鸡胸肉",
+            "花生米",
+            "干辣椒",
+            "黄瓜"
           ],
           "minutes": 25,
           "difficulty": "中等",
-          "note": "没有鱼却有鱼香，酸甜微辣",
-          "videoUrl": "https://search.bilibili.com/all?keyword=%E9%B1%BC%E9%A6%99%E8%82%89%E4%B8%9D%20%E7%94%B5%E7%82%92%E9%94%85%20%E6%95%99%E7%A8%8B",
+          "note": "糊辣荔枝口，花生米最后放才脆",
+          "videoUrl": "https://www.bilibili.com/video/BV18x411L7oz/",
+          "videoSource": "fixed",
+          "imageUrl": ""
+        },
+        {
+          "id": "m05",
+          "name": "回锅肉",
+          "ingredients": [
+            "五花肉",
+            "蒜苗",
+            "豆瓣酱",
+            "豆豉"
+          ],
+          "minutes": 30,
+          "difficulty": "中等",
+          "note": "先煮后炒，肥而不腻",
+          "videoUrl": "https://search.bilibili.com/all?keyword=%E5%9B%9E%E9%94%85%E8%82%89%20%E7%94%B5%E7%82%92%E9%94%85%20%E6%95%99%E7%A8%8B",
           "videoSource": "search",
           "imageUrl": ""
         },
         {
-          "id": "m29",
-          "name": "滑蛋牛肉",
+          "id": "m21",
+          "name": "辣子鸡",
           "ingredients": [
-            "牛肉片",
-            "鸡蛋",
-            "小葱",
-            "淀粉"
+            "鸡腿肉",
+            "干辣椒",
+            "花椒",
+            "白芝麻"
           ],
-          "minutes": 15,
-          "difficulty": "简单",
-          "note": "蛋液裹住牛肉，嫩得能吸",
-          "videoUrl": "https://search.bilibili.com/all?keyword=%E6%BB%91%E8%9B%8B%E7%89%9B%E8%82%89%20%E7%94%B5%E7%82%92%E9%94%85%20%E6%95%99%E7%A8%8B",
+          "minutes": 35,
+          "difficulty": "中等",
+          "note": "鸡块煸透再炒，越嚼越香",
+          "videoUrl": "https://search.bilibili.com/all?keyword=%E8%BE%A3%E5%AD%90%E9%B8%A1%20%E7%94%B5%E7%82%92%E9%94%85%20%E6%95%99%E7%A8%8B",
           "videoSource": "search",
           "imageUrl": ""
         }
@@ -254,49 +283,51 @@
       "accent": "#506b49",
       "dishes": [
         {
-          "id": "v23",
-          "name": "鱼香茄子",
+          "id": "v05",
+          "name": "地三鲜",
           "ingredients": [
             "茄子",
-            "泡椒",
-            "蒜",
-            "香醋"
+            "土豆",
+            "青椒",
+            "蒜"
           ],
-          "minutes": 22,
+          "minutes": 25,
           "difficulty": "中等",
-          "note": "素版鱼香，一样下饭",
-          "videoUrl": "https://search.bilibili.com/all?keyword=%E9%B1%BC%E9%A6%99%E8%8C%84%E5%AD%90%20%E7%94%B5%E7%82%92%E9%94%85%20%E6%95%99%E7%A8%8B",
+          "note": "三样先煎透，再一起焖",
+          "videoUrl": "https://search.bilibili.com/all?keyword=%E5%9C%B0%E4%B8%89%E9%B2%9C%20%E7%94%B5%E7%82%92%E9%94%85%20%E6%95%99%E7%A8%8B",
           "videoSource": "search",
           "imageUrl": ""
         },
         {
-          "id": "v18",
-          "name": "菠菜炒粉丝",
+          "id": "v26",
+          "name": "香菇油菜",
           "ingredients": [
-            "菠菜",
-            "红薯粉丝",
-            "蒜"
+            "油菜",
+            "香菇",
+            "蒜",
+            "蚝油"
+          ],
+          "minutes": 12,
+          "difficulty": "简单",
+          "note": "油菜整棵下锅，摆盘更整齐",
+          "videoUrl": "https://search.bilibili.com/all?keyword=%E9%A6%99%E8%8F%87%E6%B2%B9%E8%8F%9C%20%E7%94%B5%E7%82%92%E9%94%85%20%E6%95%99%E7%A8%8B",
+          "videoSource": "search",
+          "imageUrl": ""
+        },
+        {
+          "id": "v04",
+          "name": "醋溜土豆丝",
+          "ingredients": [
+            "土豆",
+            "青椒",
+            "干辣椒",
+            "白醋"
           ],
           "minutes": 15,
           "difficulty": "简单",
-          "note": "粉丝提前泡软，别久煮",
-          "videoUrl": "https://search.bilibili.com/all?keyword=%E8%8F%A0%E8%8F%9C%E7%82%92%E7%B2%89%E4%B8%9D%20%E7%94%B5%E7%82%92%E9%94%85%20%E6%95%99%E7%A8%8B",
-          "videoSource": "search",
-          "imageUrl": ""
-        },
-        {
-          "id": "v06",
-          "name": "蒜蓉西兰花",
-          "ingredients": [
-            "西兰花",
-            "蒜末",
-            "蚝油"
-          ],
-          "minutes": 10,
-          "difficulty": "简单",
-          "note": "焯水三十秒，颜色才翠",
-          "videoUrl": "https://search.bilibili.com/all?keyword=%E8%92%9C%E8%93%89%E8%A5%BF%E5%85%B0%E8%8A%B1%20%E7%94%B5%E7%82%92%E9%94%85%20%E6%95%99%E7%A8%8B",
-          "videoSource": "search",
+          "note": "土豆丝泡水去淀粉才脆",
+          "videoUrl": "https://www.bilibili.com/video/BV11t4y197dE/",
+          "videoSource": "fixed",
           "imageUrl": ""
         }
       ]
@@ -309,50 +340,50 @@
       "accent": "#a87b32",
       "dishes": [
         {
-          "id": "s16",
-          "name": "鲫鱼豆腐汤",
+          "id": "s18",
+          "name": "三鲜汤",
           "ingredients": [
-            "鲫鱼",
+            "虾仁",
+            "鱼丸",
+            "青菜",
+            "鸡蛋"
+          ],
+          "minutes": 20,
+          "difficulty": "简单",
+          "note": "冰箱里有什么鲜货都能放",
+          "videoUrl": "https://search.bilibili.com/all?keyword=%E4%B8%89%E9%B2%9C%E6%B1%A4%20%E7%94%B5%E7%82%92%E9%94%85%20%E6%95%99%E7%A8%8B",
+          "videoSource": "search",
+          "imageUrl": ""
+        },
+        {
+          "id": "s14",
+          "name": "菠菜猪肝汤",
+          "ingredients": [
+            "猪肝",
+            "菠菜",
+            "姜",
+            "料酒"
+          ],
+          "minutes": 25,
+          "difficulty": "中等",
+          "note": "猪肝切薄片，下锅变色就关火",
+          "videoUrl": "https://search.bilibili.com/all?keyword=%E8%8F%A0%E8%8F%9C%E7%8C%AA%E8%82%9D%E6%B1%A4%20%E7%94%B5%E7%82%92%E9%94%85%20%E6%95%99%E7%A8%8B",
+          "videoSource": "search",
+          "imageUrl": ""
+        },
+        {
+          "id": "s26",
+          "name": "西湖牛肉羹",
+          "ingredients": [
+            "牛肉末",
             "嫩豆腐",
-            "姜",
-            "小葱"
+            "蛋清",
+            "香菜"
           ],
-          "minutes": 40,
+          "minutes": 25,
           "difficulty": "中等",
-          "note": "鱼先煎透再冲热水，汤才奶白",
-          "videoUrl": "https://search.bilibili.com/all?keyword=%E9%B2%AB%E9%B1%BC%E8%B1%86%E8%85%90%E6%B1%A4%20%E7%94%B5%E7%82%92%E9%94%85%20%E6%95%99%E7%A8%8B",
-          "videoSource": "search",
-          "imageUrl": ""
-        },
-        {
-          "id": "s24",
-          "name": "花生鸡爪汤",
-          "ingredients": [
-            "鸡爪",
-            "花生",
-            "姜",
-            "红枣"
-          ],
-          "minutes": 80,
-          "difficulty": "中等",
-          "note": "鸡爪炖到胶质出来，汤会黏唇",
-          "videoUrl": "https://search.bilibili.com/all?keyword=%E8%8A%B1%E7%94%9F%E9%B8%A1%E7%88%AA%E6%B1%A4%20%E7%94%B5%E7%82%92%E9%94%85%20%E6%95%99%E7%A8%8B",
-          "videoSource": "search",
-          "imageUrl": ""
-        },
-        {
-          "id": "s05",
-          "name": "白萝卜牛腩汤",
-          "ingredients": [
-            "牛腩",
-            "白萝卜",
-            "姜",
-            "八角"
-          ],
-          "minutes": 90,
-          "difficulty": "中等",
-          "note": "萝卜炖到透明，汤清而浓",
-          "videoUrl": "https://search.bilibili.com/all?keyword=%E7%99%BD%E8%90%9D%E5%8D%9C%E7%89%9B%E8%85%A9%E6%B1%A4%20%E7%94%B5%E7%82%92%E9%94%85%20%E6%95%99%E7%A8%8B",
+          "note": "最后勾薄芡，羹才顺滑",
+          "videoUrl": "https://search.bilibili.com/all?keyword=%E8%A5%BF%E6%B9%96%E7%89%9B%E8%82%89%E7%BE%B9%20%E7%94%B5%E7%82%92%E9%94%85%20%E6%95%99%E7%A8%8B",
           "videoSource": "search",
           "imageUrl": ""
         }
