@@ -150,6 +150,13 @@ async function loadImages() {
   return map;
 }
 
+async function loadCovers() {
+  // data/covers.json 由 scripts/fetch-covers.mjs 生成：菜品 id → B 站封面
+  const file = path.join(DATA_DIR, 'covers.json');
+  const covers = await readJson(file, { items: {} });
+  return covers && typeof covers === 'object' && covers.items ? covers.items : {};
+}
+
 async function loadCategories() {
   const categories = await readJson(path.join(DATA_DIR, 'categories.json'));
   if (!Array.isArray(categories) || categories.length === 0) throw new Error('data/categories.json 应为非空数组');
@@ -212,7 +219,7 @@ function pickForCategory({ category, dishes, history, today, windowDays, seed })
   return chosen;
 }
 
-function buildDishView(dish, imageUrl) {
+function buildDishView(dish, image) {
   const keyword = `${dish.name} 电炒锅 教程`;
   const url = dish.videoUrl || bilibiliSearch(keyword);
   return {
@@ -224,7 +231,8 @@ function buildDishView(dish, imageUrl) {
     note: dish.note,
     videoUrl: url,
     videoSource: dish.videoUrl ? 'fixed' : 'search',
-    imageUrl: imageUrl ?? '',
+    imageUrl: image?.imageUrl ?? '',
+    imageSource: image?.imageSource ?? '',
   };
 }
 
@@ -235,6 +243,15 @@ async function main() {
   const categories = await loadCategories();
   const history = await loadHistory();
   const images = await loadImages();
+  const covers = await loadCovers();
+
+  // 图片优先级：data/images.json 手工配置 > B 站教程封面 > 页面 CSS 插画
+  const imageFor = (dish) => {
+    if (images[dish.id]) return { imageUrl: images[dish.id], imageSource: 'manual' };
+    const cover = covers[dish.id];
+    if (cover?.cover) return { imageUrl: `./${cover.cover}`, imageSource: 'bilibili' };
+    return { imageUrl: '', imageSource: '' };
+  };
   // DAILY_WOK_DATE 仅用于测试/补生成，正常运行时取北京时间当天
   const today = process.env.DAILY_WOK_DATE?.trim() || todayInTz();
   if (!/^\d{4}-\d{2}-\d{2}$/.test(today)) throw new Error(`日期格式应为 YYYY-MM-DD，实际为：${today}`);
@@ -320,7 +337,7 @@ async function main() {
       en: c.en ?? c.key.toUpperCase(),
       note: c.note ?? '',
       accent: c.accent ?? '#b7472f',
-      dishes: picks[c.key].map((dish) => buildDishView(dish, images[dish.id])),
+      dishes: picks[c.key].map((dish) => buildDishView(dish, imageFor(dish))),
     })),
   };
 
@@ -329,7 +346,7 @@ async function main() {
 
   // 页面的「换一换」需要候选池：输出全量菜品（含已解析的视频/图片地址）
   const pool = dishes.map((dish, index) => ({
-    ...buildDishView(dish, images[dish.id]),
+    ...buildDishView(dish, imageFor(dish)),
     category: dish.category,
     order: index,
   }));

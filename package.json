@@ -6,7 +6,8 @@
   "description": "每天自动生成电炒锅推荐菜单，并部署到 GitHub Pages。",
   "scripts": {
     "generate": "node scripts/generate-daily.mjs",
-    "preview": "node scripts/preview.mjs"
+    "preview": "node scripts/preview.mjs",
+    "covers": "node scripts/fetch-covers.mjs"
   },
   "engines": {
     "node": ">=20"

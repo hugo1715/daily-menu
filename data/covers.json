@@ -1,0 +1,798 @@
+{
+  "updatedAt": "2026-11-16T14:51:31.801Z",
+  "source": "bilibili-search",
+  "items": {
+    "m01": {
+      "cover": "images/covers/m01.webp",
+      "bvid": "BV1xS4y167Qe",
+      "title": "我做的“青椒肉丝”很好吃！步骤清晰详细、做法易学接地气",
+      "play": 2658794,
+      "author": "美食强",
+      "bytes": 36476,
+      "fetchedAt": "2026-11-16T14:47:22.683Z"
+    },
+    "m02": {
+      "cover": "images/covers/m02.webp",
+      "bvid": "BV1xvELzJEvh",
+      "title": "【拉丝番茄炒蛋】丝状的鸡蛋裹满浓郁茄汁",
+      "play": 2563727,
+      "author": "村驴",
+      "bytes": 32338,
+      "fetchedAt": "2026-11-16T14:47:24.046Z"
+    },
+    "m03": {
+      "cover": "images/covers/m03.webp",
+      "bvid": "BV1pJ411v7S9",
+      "title": "可乐鸡翅！！好吃到都要啃骨头了，看一遍就能学会，超简单做法",
+      "play": 7274361,
+      "author": "长得像美食博主的女人",
+      "bytes": 32422,
+      "fetchedAt": "2026-11-16T14:47:25.335Z"
+    },
+    "m04": {
+      "cover": "images/covers/m04.webp",
+      "bvid": "BV1iqUKBwEBV",
+      "title": "做法简单但是巨香巨好吃！！红烧鸡腿超详细教程",
+      "play": 938920,
+      "author": "袁锐-萌新的圆",
+      "bytes": 56244,
+      "fetchedAt": "2026-11-16T14:47:26.536Z"
+    },
+    "m05": {
+      "cover": "images/covers/m05.webp",
+      "bvid": "BV1HW411c7Q2",
+      "title": "厨师长教你：“回锅肉”的正宗做法，赶快收藏了",
+      "play": 4398853,
+      "author": "美食作家王刚R",
+      "bytes": 17484,
+      "fetchedAt": "2026-11-16T14:47:27.708Z"
+    },
+    "m06": {
+      "cover": "images/covers/m06.webp",
+      "bvid": "BV1QV4y1y7tx",
+      "title": "见油不见芡！模板级的老味鱼香肉丝，酸辣甜咸，妥妥下饭神器~",
+      "play": 2224104,
+      "author": "老饭骨",
+      "bytes": 36942,
+      "fetchedAt": "2026-11-16T14:47:28.844Z"
+    },
+    "m07": {
+      "cover": "images/covers/m07.webp",
+      "bvid": "BV1Vh4y1s7ER",
+      "title": "传承三代的镇店之菜！不大甜不大酸，再现38年前老味道~丨宫保鸡丁",
+      "play": 1781154,
+      "author": "老饭骨",
+      "bytes": 36468,
+      "fetchedAt": "2026-11-16T14:47:30.224Z"
+    },
+    "m08": {
+      "cover": "images/covers/m08.webp",
+      "bvid": "BV1hV4y1q7LS",
+      "title": "哪有男人不会做饭啊！（黑椒牛柳意面）",
+      "play": 783693,
+      "author": "小酒吃点啥-",
+      "bytes": 39754,
+      "fetchedAt": "2026-11-16T14:47:31.433Z"
+    },
+    "m09": {
+      "cover": "images/covers/m09.webp",
+      "bvid": "BV1U5L3ziEgm",
+      "title": "当你想吃“洋葱炒牛肉”就把这部视频翻出来！",
+      "play": 794108,
+      "author": "美食强",
+      "bytes": 26840,
+      "fetchedAt": "2026-11-16T14:47:32.639Z"
+    },
+    "m10": {
+      "cover": "images/covers/m10.webp",
+      "bvid": "BV1YV411b7yp",
+      "title": "厨师长教你：“孜然羊肉”的家常做法，香味浓郁，简单易学，收藏",
+      "play": 2379610,
+      "author": "美食作家王刚R",
+      "bytes": 18700,
+      "fetchedAt": "2026-11-16T14:47:34.086Z"
+    },
+    "m11": {
+      "cover": "images/covers/m11.webp",
+      "bvid": "BV1L6421w7UL",
+      "title": "预制菜都预制不了的香菇滑鸡到底要怎么做？今天教你个小秘诀~",
+      "play": 373385,
+      "author": "安秋金",
+      "bytes": 49016,
+      "fetchedAt": "2026-11-16T14:47:35.364Z"
+    },
+    "m12": {
+      "cover": "images/covers/m12.webp",
+      "bvid": "BV12M4y1L7s5",
+      "title": "哪有男人不会做饭啊！（土豆烧牛肉）",
+      "play": 601009,
+      "author": "小酒吃点啥-",
+      "bytes": 35004,
+      "fetchedAt": "2026-11-16T14:49:57.611Z"
+    },
+    "m13": {
+      "cover": "images/covers/m13.webp",
+      "bvid": "BV1MJ411t7pT",
+      "title": "巨好吃的红烧肉教程来啦！新手不败菜谱，好吃到停不下来，香糯无敌色泽超诱人",
+      "play": 8975965,
+      "author": "长得像美食博主的女人",
+      "bytes": 36446,
+      "fetchedAt": "2026-11-16T14:47:37.824Z"
+    },
+    "m14": {
+      "cover": "images/covers/m14.webp",
+      "bvid": "BV1WTcReDEV1",
+      "title": "小伙干完活 出租屋做一锅肉末茄子 还有剩菜 吃起来真是美滋滋",
+      "play": 3137619,
+      "author": "魏光乐呀",
+      "bytes": 22366,
+      "fetchedAt": "2026-11-16T14:47:39.019Z"
+    },
+    "m15": {
+      "cover": "images/covers/m15.webp",
+      "bvid": "BV1BShqzYEvB",
+      "title": "当你想吃“虾仁滑蛋”就把这集视频翻出来",
+      "play": 439580,
+      "author": "美食强",
+      "bytes": 21058,
+      "fetchedAt": "2026-11-16T14:47:40.375Z"
+    },
+    "m16": {
+      "cover": "images/covers/m16.webp",
+      "bvid": "BV1zH4y1s7Ln",
+      "title": "你真的会做白灼虾？原来过程还要加东西？",
+      "play": 2117783,
+      "author": "厨师徐嘉乐",
+      "bytes": 29882,
+      "fetchedAt": "2026-11-16T14:47:41.474Z"
+    },
+    "m17": {
+      "cover": "images/covers/m17.webp",
+      "bvid": "BV1AF411v7PX",
+      "title": "好吃到舔手指的蒜香鸡翅，做法简单外焦里嫩，大人小孩都喜欢",
+      "play": 1287593,
+      "author": "西西里美食记",
+      "bytes": 54154,
+      "fetchedAt": "2026-11-16T14:47:42.650Z"
+    },
+    "m18": {
+      "cover": "images/covers/m18.webp",
+      "bvid": "BV1u841167cS",
+      "title": "技术关键在腌肉！鲜嫩入味，绝对的下饭神器~丨蚝油牛肉",
+      "play": 1195318,
+      "author": "老饭骨",
+      "bytes": 37432,
+      "fetchedAt": "2026-11-16T14:47:43.927Z"
+    },
+    "m19": {
+      "cover": "images/covers/m19.webp",
+      "bvid": "BV1Dt411B78h",
+      "title": "(* ￣︿￣)不耍流氓的糖醋里脊！超详细！不翻车！",
+      "play": 3726814,
+      "author": "爱做饭的芋头SAMA",
+      "bytes": 33512,
+      "fetchedAt": "2026-11-16T14:47:45.137Z"
+    },
+    "m20": {
+      "cover": "images/covers/m20.webp",
+      "bvid": "BV15K4y1J7ui",
+      "title": "五花肉炒花菜，小孩老人都爱吃的菜！",
+      "play": 5125,
+      "author": "阿妮爱厨房美食",
+      "bytes": 22986,
+      "fetchedAt": "2026-11-16T14:47:46.684Z"
+    },
+    "m21": {
+      "cover": "images/covers/m21.webp",
+      "bvid": "BV16K4y1b72h",
+      "title": "厨师长教你：“辣子鸡”的家常做法，不用宽油也能有爱的味道",
+      "play": 2137405,
+      "author": "美食作家王刚R",
+      "bytes": 51902,
+      "fetchedAt": "2026-11-16T14:47:47.834Z"
+    },
+    "m22": {
+      "cover": "images/covers/m22.webp",
+      "bvid": "BV1iHnnzHEbS",
+      "title": "教你做在家就能做的啤酒鸭，软烂入味，带有神奇的特殊香味，真的真的很美味！",
+      "play": 1535559,
+      "author": "杰西不妙厨房s",
+      "bytes": 42532,
+      "fetchedAt": "2026-11-16T14:47:49.060Z"
+    },
+    "m23": {
+      "cover": "images/covers/m23.webp",
+      "bvid": "BV1QR4y1p7Ac",
+      "title": "厨师长教你：“三杯鸡”的家常做法，汁香味浓，鲜嫩爽滑",
+      "play": 1955771,
+      "author": "美食作家王刚R",
+      "bytes": 19094,
+      "fetchedAt": "2026-11-16T14:47:50.528Z"
+    },
+    "m24": {
+      "cover": "images/covers/m24.webp",
+      "bvid": "BV1WV4y1L7xi",
+      "title": "为什么你做的番茄牛腩没有五星级酒店做的好吃？",
+      "play": 2305366,
+      "author": "万能工具人阿伟",
+      "bytes": 38734,
+      "fetchedAt": "2026-11-16T14:47:51.657Z"
+    },
+    "m25": {
+      "cover": "images/covers/m25.webp",
+      "bvid": "BV1kc411z7H5",
+      "title": "炒腊肉别直接下锅炒，切记要多做一步，腊肉炒蒜苗肉嫩不咸特别香",
+      "play": 8076,
+      "author": "大厨阿斗",
+      "bytes": 28992,
+      "fetchedAt": "2026-11-16T14:47:52.867Z"
+    },
+    "m27": {
+      "cover": "images/covers/m27.webp",
+      "bvid": "BV19XKJ6FEXN",
+      "title": "dy:咖喱鸡块",
+      "play": 1383,
+      "author": "壹粒蘤生",
+      "bytes": 8864,
+      "fetchedAt": "2026-11-16T14:51:19.876Z"
+    },
+    "m28": {
+      "cover": "images/covers/m28.webp",
+      "bvid": "BV1ov4y1k7Uw",
+      "title": "韭菜炒鱿鱼，鲜嫩不老有妙招，老厨教你正确做法，口感弹牙超解馋",
+      "play": 82092,
+      "author": "老东北美食",
+      "bytes": 46248,
+      "fetchedAt": "2026-11-16T14:47:56.474Z"
+    },
+    "m29": {
+      "cover": "images/covers/m29.webp",
+      "bvid": "BV12u411Z72s",
+      "title": "厨师长教你：“滑蛋牛肉”的家常做法，简单实用，健康美味",
+      "play": 1727348,
+      "author": "美食作家王刚R",
+      "bytes": 22122,
+      "fetchedAt": "2026-11-16T14:47:57.615Z"
+    },
+    "m30": {
+      "cover": "images/covers/m30.webp",
+      "bvid": "BV1N2421f77r",
+      "title": "隋卞一做 |特级厨师的蒜蓉粉丝虾做法!",
+      "play": 1127812,
+      "author": "特厨做饭_",
+      "bytes": 30854,
+      "fetchedAt": "2026-11-16T14:47:59.066Z"
+    },
+    "v01": {
+      "cover": "images/covers/v01.webp",
+      "bvid": "BV1mU4y1b7Dq",
+      "title": "蒜蓉油麦菜，1分36秒快节奏制作讲解，60秒出锅17年的功底就是牛",
+      "play": 275149,
+      "author": "美食状元哥",
+      "bytes": 31964,
+      "fetchedAt": "2026-11-16T14:48:00.260Z"
+    },
+    "v02": {
+      "cover": "images/covers/v02.webp",
+      "bvid": "BV1HD4y1A7ke",
+      "title": "厨师长一镜分享“手撕包菜”的门门道道，收藏并学习起来",
+      "play": 1839953,
+      "author": "美食作家王刚R",
+      "bytes": 21468,
+      "fetchedAt": "2026-11-16T14:48:01.442Z"
+    },
+    "v03": {
+      "cover": "images/covers/v03.webp",
+      "bvid": "BV13D4y1u7TP",
+      "title": "厨师长一镜分享“干煸四季豆”的门门道道，收藏并学习起来",
+      "play": 1582059,
+      "author": "美食作家王刚R",
+      "bytes": 21932,
+      "fetchedAt": "2026-11-16T14:48:02.832Z"
+    },
+    "v04": {
+      "cover": "images/covers/v04.webp",
+      "bvid": "BV1UhMMzkEqi",
+      "title": "当你想吃“醋溜土豆丝”就把这部视频翻出来",
+      "play": 639189,
+      "author": "美食强",
+      "bytes": 21142,
+      "fetchedAt": "2026-11-16T14:48:04.085Z"
+    },
+    "v05": {
+      "cover": "images/covers/v05.webp",
+      "bvid": "BV1st4y1Y73H",
+      "title": "地三鲜怎么做最好吃，竟然不费油！",
+      "play": 1631456,
+      "author": "马壮实Hera",
+      "bytes": 17548,
+      "fetchedAt": "2026-11-16T14:48:05.179Z"
+    },
+    "v06": {
+      "cover": "images/covers/v06.webp",
+      "bvid": "BV1fy4y1W7z5",
+      "title": "【小高姐】蒜蓉西兰花",
+      "play": 1420863,
+      "author": "小高姐的魔法调料",
+      "bytes": 33636,
+      "fetchedAt": "2026-11-16T14:48:06.389Z"
+    },
+    "v07": {
+      "cover": "images/covers/v07.webp",
+      "bvid": "BV1mJ411H7Va",
+      "title": "【当和】清炒荷兰豆，脆嫩爽口，香甜美味，很好吃的小炒菜",
+      "play": 403624,
+      "author": "当和美食",
+      "bytes": 27004,
+      "fetchedAt": "2026-11-16T14:48:07.526Z"
+    },
+    "v08": {
+      "cover": "images/covers/v08.webp",
+      "bvid": "BV1oq4y177MZ",
+      "title": "香菇青菜分开炒就错了，难怪香菇咸青菜没味，饭店大厨教你新吃法",
+      "play": 252859,
+      "author": "家宴美食厨房",
+      "bytes": 32640,
+      "fetchedAt": "2026-11-16T14:48:09.054Z"
+    },
+    "v09": {
+      "cover": "images/covers/v09.webp",
+      "bvid": "BV1wP411G7gX",
+      "title": "家常豆腐超级简单做法，味道好吃拌米饭真的太香了！",
+      "play": 78710,
+      "author": "饱食料理",
+      "bytes": 29224,
+      "fetchedAt": "2026-11-16T14:48:10.333Z"
+    },
+    "v10": {
+      "cover": "images/covers/v10.webp",
+      "bvid": "BV1ot4y1S7Hf",
+      "title": "红烧茄子以后别用油炸了，教你健康新吃法，软嫩鲜香又入味，下饭",
+      "play": 3892859,
+      "author": "相遇味蕾",
+      "bytes": 51640,
+      "fetchedAt": "2026-11-16T14:48:11.631Z"
+    },
+    "v11": {
+      "cover": "images/covers/v11.webp",
+      "bvid": "BV16v411k76o",
+      "title": "【蚝汁娃娃菜】味道鲜美多汁，营养低脂，好吃不怕胖，做法超简单",
+      "play": 701402,
+      "author": "相遇味蕾",
+      "bytes": 42012,
+      "fetchedAt": "2026-11-16T14:48:12.874Z"
+    },
+    "v12": {
+      "cover": "images/covers/v12.webp",
+      "bvid": "BV1ZZ4y1A7HK",
+      "title": "土豆这样做更好吃！简单又家常的干锅土豆片，太下饭了！",
+      "play": 1433875,
+      "author": "卷卷名字被吃掉了",
+      "bytes": 45912,
+      "fetchedAt": "2026-11-16T14:48:14.118Z"
+    },
+    "v13": {
+      "cover": "images/covers/v13.webp",
+      "bvid": "BV1bS4y1r7jR",
+      "title": "厨师长教你：“蚝油生菜”的家常做法，爽脆鲜嫩，简单易做",
+      "play": 2836427,
+      "author": "美食作家王刚R",
+      "bytes": 19406,
+      "fetchedAt": "2026-11-16T14:48:15.529Z"
+    },
+    "v14": {
+      "cover": "images/covers/v14.webp",
+      "bvid": "BV1g34y1877h",
+      "title": "正月仔婿，二月韭菜！教你韭菜炒豆干的潮汕做法，鲜香",
+      "play": 3831,
+      "author": "胖江生活美食",
+      "bytes": 48400,
+      "fetchedAt": "2026-11-16T14:48:17.078Z"
+    },
+    "v15": {
+      "cover": "images/covers/v15.webp",
+      "bvid": "BV1c7411z7Wq",
+      "title": "大厨教你青椒土豆丝的正确做法，清脆爽口，一次一盘不够吃",
+      "play": 330422,
+      "author": "魏大永",
+      "bytes": 19182,
+      "fetchedAt": "2026-11-16T14:48:18.263Z"
+    },
+    "v16": {
+      "cover": "images/covers/v16.webp",
+      "bvid": "BV1Lb4y197EG",
+      "title": "春季要多吃木耳炒山药，脆嫩爽口，清淡又营养，老人孩子都喜欢",
+      "play": 277130,
+      "author": "随手做美食",
+      "bytes": 22928,
+      "fetchedAt": "2026-11-16T14:48:19.646Z"
+    },
+    "v17": {
+      "cover": "images/covers/v17.webp",
+      "bvid": "BV1byrsB9EJX",
+      "title": "大厨分享清炒莴笋丝家常做法，清淡清脆，味道鲜美，营养又美味",
+      "play": 54527,
+      "author": "朝哥美食",
+      "bytes": 23596,
+      "fetchedAt": "2026-11-16T14:48:21.097Z"
+    },
+    "v18": {
+      "cover": "images/covers/v18.webp",
+      "bvid": "BV1gc41157ku",
+      "title": "春季家常菜菠菜炒粉丝，学会炒青菜的小技巧，鲜嫩入味，拌饭更香",
+      "play": 27595,
+      "author": "老东北美食",
+      "bytes": 50384,
+      "fetchedAt": "2026-11-16T14:48:22.423Z"
+    },
+    "v19": {
+      "cover": "images/covers/v19.webp",
+      "bvid": "BV1NQ4y1Y7La",
+      "title": "饭店里【番茄豆腐】怎么那么好吃，大厨分享教程，好吃美味又下饭",
+      "play": 21870,
+      "author": "辉豆美食",
+      "bytes": 27026,
+      "fetchedAt": "2026-11-16T14:48:23.764Z"
+    },
+    "v20": {
+      "cover": "images/covers/v20.webp",
+      "bvid": "BV1GiL2zuEFA",
+      "title": "干煸杏鲍菇，杏鲍菇这样做比肉还香",
+      "play": 63386,
+      "author": "万能工具人阿伟",
+      "bytes": 33576,
+      "fetchedAt": "2026-11-16T14:48:24.945Z"
+    },
+    "v21": {
+      "cover": "images/covers/v21.webp",
+      "bvid": "BV1a54y1h7LC",
+      "title": "香煎豆腐超级好吃，咬一口还会爆汁",
+      "play": 2452939,
+      "author": "大表姐的厨房",
+      "bytes": 50374,
+      "fetchedAt": "2026-11-16T14:48:26.190Z"
+    },
+    "v22": {
+      "cover": "images/covers/v22.webp",
+      "bvid": "BV1ar4y187hW",
+      "title": "如果你爱吃“酸辣白菜”可以试一下我的做法",
+      "play": 1134197,
+      "author": "美食强",
+      "bytes": 28030,
+      "fetchedAt": "2026-11-16T14:48:27.419Z"
+    },
+    "v23": {
+      "cover": "images/covers/v23.webp",
+      "bvid": "BV1Hs411j7Tn",
+      "title": "厨师长教你：“少油型鱼香茄子”的做法，快收藏了",
+      "play": 1882349,
+      "author": "美食作家王刚R",
+      "bytes": 16384,
+      "fetchedAt": "2026-11-16T14:48:28.618Z"
+    },
+    "v24": {
+      "cover": "images/covers/v24.webp",
+      "bvid": "BV1VT4y1i7or",
+      "title": "家常味道 清炒豆芽",
+      "play": 6417,
+      "author": "三百六十行干饭人",
+      "bytes": 17940,
+      "fetchedAt": "2026-11-16T14:50:03.522Z"
+    },
+    "v25": {
+      "cover": "images/covers/v25.webp",
+      "bvid": "BV1Fu4m1T79Z",
+      "title": "素炒三丝",
+      "play": 152025,
+      "author": "阿蔡美食雕刻",
+      "bytes": 27000,
+      "fetchedAt": "2026-11-16T14:48:31.215Z"
+    },
+    "v26": {
+      "cover": "images/covers/v26.webp",
+      "bvid": "BV14y4y1874t",
+      "title": "老师傅教的香菇油菜做法真不错，鲜香下饭不出汤，家常调料酒店味",
+      "play": 166028,
+      "author": "老东北美食",
+      "bytes": 39048,
+      "fetchedAt": "2026-11-16T14:48:32.599Z"
+    },
+    "v27": {
+      "cover": "images/covers/v27.webp",
+      "bvid": "BV1AE411y7Vy",
+      "title": "蒜蓉茼蒿最简单的家常做法，清香爽脆，一看就会，一顿2盘都不够吃",
+      "play": 45408,
+      "author": "西北享哥",
+      "bytes": 30684,
+      "fetchedAt": "2026-11-16T14:48:33.823Z"
+    },
+    "v28": {
+      "cover": "images/covers/v28.webp",
+      "bvid": "BV1ja4y1j7VQ",
+      "title": "地道清炒藕片的做法，清脆爽口不发黑，一盘没够吃",
+      "play": 253874,
+      "author": "古月美食",
+      "bytes": 20798,
+      "fetchedAt": "2026-11-16T14:48:35.118Z"
+    },
+    "v29": {
+      "cover": "images/covers/v29.webp",
+      "bvid": "BV15yMCzDE2h",
+      "title": "【几块钱在家做出饭店味的红烧冬瓜】",
+      "play": 273703,
+      "author": "村驴",
+      "bytes": 38192,
+      "fetchedAt": "2026-11-16T14:48:36.337Z"
+    },
+    "v30": {
+      "cover": "images/covers/v30.webp",
+      "bvid": "BV1oD421N7S8",
+      "title": "今日食谱：土豆烧鸡，清炒芦笋，焖南瓜，红烧鱼，鲍鱼鸡汤",
+      "play": 713447,
+      "author": "阿蔡美食雕刻",
+      "bytes": 15234,
+      "fetchedAt": "2026-11-16T14:50:04.716Z"
+    },
+    "s01": {
+      "cover": "images/covers/s01.webp",
+      "bvid": "BV12s421M7yN",
+      "title": "如何完美地做出各种质感的番茄鸡蛋汤？清爽大片、浓稠拉丝，都给你答案【解构家常菜】西红柿鸡蛋汤/西红柿蛋花汤/番茄蛋花汤",
+      "play": 603666,
+      "author": "杨光_建厨师",
+      "bytes": 31104,
+      "fetchedAt": "2026-11-16T14:48:38.758Z"
+    },
+    "s02": {
+      "cover": "images/covers/s02.webp",
+      "bvid": "BV1ct4y1H7sh",
+      "title": "这才是紫菜蛋花汤的正确做法，汤鲜味美蛋花漂亮，技巧全告诉你",
+      "play": 3052941,
+      "author": "超子美食",
+      "bytes": 48104,
+      "fetchedAt": "2026-11-16T14:48:40.041Z"
+    },
+    "s03": {
+      "cover": "images/covers/s03.webp",
+      "bvid": "BV18E411Y7xh",
+      "title": "冬瓜排骨汤，汤浓肉香，越喝越想喝",
+      "play": 640417,
+      "author": "当和美食",
+      "bytes": 15802,
+      "fetchedAt": "2026-11-16T14:48:41.252Z"
+    },
+    "s04": {
+      "cover": "images/covers/s04.webp",
+      "bvid": "BV1JA4y1f7zk",
+      "title": "厨师长教你：“玉米排骨汤”的家常做法，排骨鲜嫩多汁不腥不柴",
+      "play": 1010807,
+      "author": "小柒的美食",
+      "bytes": 22904,
+      "fetchedAt": "2026-11-16T14:48:42.342Z"
+    },
+    "s05": {
+      "cover": "images/covers/s05.webp",
+      "bvid": "BV1yzU6YEE2R",
+      "title": "【萝卜去臭气秘诀】清炖牛腩保姆级教程",
+      "play": 532968,
+      "author": "村驴",
+      "bytes": 26860,
+      "fetchedAt": "2026-11-16T14:48:43.534Z"
+    },
+    "s06": {
+      "cover": "images/covers/s06.webp",
+      "bvid": "BV1YQ4y1v7K1",
+      "title": "番茄菌菇豆腐汤！喝一口仿佛全身开了暖气！",
+      "play": 630627,
+      "author": "Pier先生",
+      "bytes": 36398,
+      "fetchedAt": "2026-11-16T14:48:44.603Z"
+    },
+    "s07": {
+      "cover": "images/covers/s07.webp",
+      "bvid": "BV1E9tCzVErG",
+      "title": "今天是丝瓜蛋汤耶",
+      "play": 4909,
+      "author": "多恩是只狗",
+      "bytes": 19396,
+      "fetchedAt": "2026-11-16T14:48:46.060Z"
+    },
+    "s08": {
+      "cover": "images/covers/s08.webp",
+      "bvid": "BV1wo4y1a7RX",
+      "title": "白菜豆腐汤 | 零失败、健康减脂 | 冬日暖胃",
+      "play": 769464,
+      "author": "何时下厨",
+      "bytes": 18762,
+      "fetchedAt": "2026-11-16T14:48:47.323Z"
+    },
+    "s09": {
+      "cover": "images/covers/s09.webp",
+      "bvid": "BV14gyZYtEHT",
+      "title": "第75期四菜一汤教程：海带排骨汤，蒜蓉大虾，蛤蜊蒸蛋，清蒸鲈鱼，清炒菠菜，详细到从买菜开始，在家可以轻松复刻",
+      "play": 393140,
+      "author": "阿蔡美食雕刻",
+      "bytes": 20332,
+      "fetchedAt": "2026-11-16T14:48:48.429Z"
+    },
+    "s10": {
+      "cover": "images/covers/s10.webp",
+      "bvid": "BV1JT411W7Xi",
+      "title": "番茄牛肉汤必须要炖两个小时吗？今天教你个小秘诀！开心番茄牛肉汤~",
+      "play": 418568,
+      "author": "安秋金",
+      "bytes": 38310,
+      "fetchedAt": "2026-11-16T14:48:49.663Z"
+    },
+    "s11": {
+      "cover": "images/covers/s11.webp",
+      "bvid": "BV1aK411G7GH",
+      "title": "厨师长分享：\"莲藕排骨汤\"的家常做法，味道很赞火候足",
+      "play": 2378385,
+      "author": "美食作家王刚R",
+      "bytes": 18674,
+      "fetchedAt": "2026-11-16T14:48:51.128Z"
+    },
+    "s12": {
+      "cover": "images/covers/s12.webp",
+      "bvid": "BV1o94y1Q7n9",
+      "title": "又浓又白的虾皮冬瓜汤，清淡营养又解暑，赶紧给家人做起来吧",
+      "play": 38254,
+      "author": "洋弟爱美食",
+      "bytes": 10308,
+      "fetchedAt": "2026-11-16T14:48:52.328Z"
+    },
+    "s13": {
+      "cover": "images/covers/s13.webp",
+      "bvid": "BV1cR4y1472S",
+      "title": "厨师长教你：“酸辣汤”的家常做法，鲜香暖胃，增加食欲助消化",
+      "play": 1422499,
+      "author": "美食作家王刚R",
+      "bytes": 21420,
+      "fetchedAt": "2026-11-16T14:48:53.635Z"
+    },
+    "s14": {
+      "cover": "images/covers/s14.webp",
+      "bvid": "BV1CF411N7uF",
+      "title": "天热多喝菠菜猪肝汤，学会这样做，猪肝不老不腥，汤鲜味美",
+      "play": 154977,
+      "author": "大叔小厨房",
+      "bytes": 26330,
+      "fetchedAt": "2026-11-16T14:48:54.769Z"
+    },
+    "s15": {
+      "cover": "images/covers/s15.webp",
+      "bvid": "BV1r54y1F7yB",
+      "title": "炖山药排骨汤时，到底要不要焯水，教你一招，汤鲜肉嫩好喝又补钙",
+      "play": 551541,
+      "author": "大厨阿斗",
+      "bytes": 21872,
+      "fetchedAt": "2026-11-16T14:48:56.040Z"
+    },
+    "s16": {
+      "cover": "images/covers/s16.webp",
+      "bvid": "BV1zV411m7Rf",
+      "title": "厨师长教你：“鲫鱼豆腐汤”的家常做法，满满的烹饪原理",
+      "play": 2693914,
+      "author": "美食作家王刚R",
+      "bytes": 20012,
+      "fetchedAt": "2026-11-16T14:48:57.165Z"
+    },
+    "s17": {
+      "cover": "images/covers/s17.webp",
+      "bvid": "BV1BJ411x7Mx",
+      "title": "秋冬滋补香菇鸡汤！驱寒暖胃超好喝",
+      "play": 110451,
+      "author": "长得像美食博主的女人",
+      "bytes": 30288,
+      "fetchedAt": "2026-11-16T14:48:58.353Z"
+    },
+    "s18": {
+      "cover": "images/covers/s18.webp",
+      "bvid": "BV1C2Jy6EEig",
+      "title": "三鲜汤，是真的挺鲜～做吧～",
+      "play": 389158,
+      "author": "丽丽教做菜-",
+      "bytes": 16556,
+      "fetchedAt": "2026-11-16T14:48:59.587Z"
+    },
+    "s19": {
+      "cover": "images/covers/s19.webp",
+      "bvid": "BV1Eutz6mEWv",
+      "title": "鲜美好喝的冬瓜丸子汤，居然这么简单！冬瓜丸子汤依旧有手就行",
+      "play": 43862,
+      "author": "特厨鲍智德",
+      "bytes": 20676,
+      "fetchedAt": "2026-11-16T14:49:00.871Z"
+    },
+    "s20": {
+      "cover": "images/covers/s20.webp",
+      "bvid": "BV1fK4y1h7jb",
+      "title": "【小高姐】番茄土豆汤",
+      "play": 1002001,
+      "author": "小高姐的魔法调料",
+      "bytes": 30578,
+      "fetchedAt": "2026-11-16T14:49:02.159Z"
+    },
+    "s21": {
+      "cover": "images/covers/s21.webp",
+      "bvid": "BV13Y411N7P5",
+      "title": "金针菇肥牛卷🔥咬一口会爆汁❗️汤汁浓郁拌饭巨香！",
+      "play": 772112,
+      "author": "娜娜美食记",
+      "bytes": 50306,
+      "fetchedAt": "2026-11-16T14:49:03.483Z"
+    },
+    "s22": {
+      "cover": "images/covers/s22.webp",
+      "bvid": "BV1f541167tX",
+      "title": "【韩式大酱汤】简单但是最普通的大酱汤吃出温馨的味道",
+      "play": 320947,
+      "author": "西里Cecile",
+      "bytes": 28048,
+      "fetchedAt": "2026-11-16T14:49:04.686Z"
+    },
+    "s23": {
+      "cover": "images/covers/s23.webp",
+      "bvid": "BV1vc411W747",
+      "title": "小白厨房第十一弹：玉米胡萝卜汤，非常清甜",
+      "play": 24693,
+      "author": "吃兔子的胡萝卜equal",
+      "bytes": 18122,
+      "fetchedAt": "2026-11-16T14:49:06.127Z"
+    },
+    "s25": {
+      "cover": "images/covers/s25.webp",
+      "bvid": "BV16F41197ci",
+      "title": "蛤蜊千万不要直接下锅或者焯水，多做一步，丝瓜蛤蜊汤才会真正鲜美好喝",
+      "play": 147239,
+      "author": "夕阳美食",
+      "bytes": 31834,
+      "fetchedAt": "2026-11-16T14:49:08.706Z"
+    },
+    "s26": {
+      "cover": "images/covers/s26.webp",
+      "bvid": "BV1m44y1u7j2",
+      "title": "【简简厨房】西湖牛肉羹，鲜香嫩滑如何做？",
+      "play": 241778,
+      "author": "简简厨房",
+      "bytes": 21414,
+      "fetchedAt": "2026-11-16T14:49:10.084Z"
+    },
+    "s27": {
+      "cover": "images/covers/s27.webp",
+      "bvid": "BV1Ct411D7RQ",
+      "title": "黄金奶香南瓜汤｜教你在家做出高颜值南瓜浓汤",
+      "play": 256091,
+      "author": "奥地利的小胡",
+      "bytes": 24180,
+      "fetchedAt": "2026-11-16T14:49:11.389Z"
+    },
+    "s28": {
+      "cover": "images/covers/s28.webp",
+      "bvid": "BV11V411a7jj",
+      "title": "天冷了，来一锅热乎乎的萝卜羊肉汤，不膻不柴有技巧，暖身又暖胃",
+      "play": 206911,
+      "author": "超子美食",
+      "bytes": 26132,
+      "fetchedAt": "2026-11-16T14:49:12.609Z"
+    },
+    "s29": {
+      "cover": "images/covers/s29.webp",
+      "bvid": "BV1VX4y1q7QR",
+      "title": "广东气候湿热，人很容易湿气重。或经常熬夜加班，容易上火，长痘，脸上和头发，都爱出油。煲冬瓜薏米莲子排骨汤，袪湿，清热下火，消暑解渴，养心安神，睡眠好。",
+      "play": 84207,
+      "author": "广东妈子靓汤",
+      "bytes": 18874,
+      "fetchedAt": "2026-11-16T14:49:13.899Z"
+    },
+    "s30": {
+      "cover": "images/covers/s30.webp",
+      "bvid": "BV15f4y1k7eC",
+      "title": "颜色金黄的玉米蛋花羹，很适合喜庆过大年，蛋花搭配玉米细腻甜香",
+      "play": 10810,
+      "author": "老东北美食",
+      "bytes": 26526,
+      "fetchedAt": "2026-11-16T14:50:09.440Z"
+    }
+  }
+}
