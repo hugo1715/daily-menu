@@ -3,7 +3,7 @@
   "timezone": "Asia/Shanghai",
   "generatedAt": "2026-11-15T16:33:46.140Z",
   "windowDays": 9,
-  "mode": "fresh",
+  "mode": "reuse",
   "recent": [
     {
       "date": "2026-11-15",
@@ -239,7 +239,8 @@
           "note": "蛋液半凝固时关火最嫩",
           "videoUrl": "https://search.bilibili.com/all?keyword=%E8%99%BE%E4%BB%81%E6%BB%91%E8%9B%8B%20%E7%94%B5%E7%82%92%E9%94%85%20%E6%95%99%E7%A8%8B",
           "videoSource": "search",
-          "imageUrl": ""
+          "imageUrl": "./images/covers/m15.webp",
+          "imageSource": "bilibili"
         },
         {
           "id": "m25",
@@ -255,7 +256,8 @@
           "note": "腊肉先蒸后炒，咸香不硬",
           "videoUrl": "https://search.bilibili.com/all?keyword=%E8%85%8A%E8%82%89%E7%82%92%E8%92%9C%E8%8B%97%20%E7%94%B5%E7%82%92%E9%94%85%20%E6%95%99%E7%A8%8B",
           "videoSource": "search",
-          "imageUrl": ""
+          "imageUrl": "./images/covers/m25.webp",
+          "imageSource": "bilibili"
         },
         {
           "id": "m17",
@@ -271,7 +273,8 @@
           "note": "腌够时间，煎到两面金黄",
           "videoUrl": "https://search.bilibili.com/all?keyword=%E8%92%9C%E9%A6%99%E9%B8%A1%E7%BF%85%20%E7%94%B5%E7%82%92%E9%94%85%20%E6%95%99%E7%A8%8B",
           "videoSource": "search",
-          "imageUrl": ""
+          "imageUrl": "./images/covers/m17.webp",
+          "imageSource": "bilibili"
         }
       ]
     },
@@ -295,7 +298,8 @@
           "note": "三色三味，切得越细越好",
           "videoUrl": "https://search.bilibili.com/all?keyword=%E7%B4%A0%E7%82%92%E4%B8%89%E4%B8%9D%20%E7%94%B5%E7%82%92%E9%94%85%20%E6%95%99%E7%A8%8B",
           "videoSource": "search",
-          "imageUrl": ""
+          "imageUrl": "./images/covers/v25.webp",
+          "imageSource": "bilibili"
         },
         {
           "id": "v24",
@@ -310,7 +314,8 @@
           "note": "豆芽要大火，出水就软了",
           "videoUrl": "https://search.bilibili.com/all?keyword=%E6%B8%85%E7%82%92%E8%B1%86%E8%8A%BD%20%E7%94%B5%E7%82%92%E9%94%85%20%E6%95%99%E7%A8%8B",
           "videoSource": "search",
-          "imageUrl": ""
+          "imageUrl": "./images/covers/v24.webp",
+          "imageSource": "bilibili"
         },
         {
           "id": "v19",
@@ -325,7 +330,8 @@
           "note": "番茄炒出汁再下豆腐",
           "videoUrl": "https://search.bilibili.com/all?keyword=%E7%95%AA%E8%8C%84%E8%B1%86%E8%85%90%20%E7%94%B5%E7%82%92%E9%94%85%20%E6%95%99%E7%A8%8B",
           "videoSource": "search",
-          "imageUrl": ""
+          "imageUrl": "./images/covers/v19.webp",
+          "imageSource": "bilibili"
         }
       ]
     },
@@ -351,7 +357,8 @@
           "note": "白胡椒和醋最后放，酸辣才冲",
           "videoUrl": "https://search.bilibili.com/all?keyword=%E9%85%B8%E8%BE%A3%E6%B1%A4%20%E7%94%B5%E7%82%92%E9%94%85%20%E6%95%99%E7%A8%8B",
           "videoSource": "search",
-          "imageUrl": ""
+          "imageUrl": "./images/covers/s13.webp",
+          "imageSource": "bilibili"
         },
         {
           "id": "s04",
@@ -367,7 +374,8 @@
           "note": "玉米的甜全渗进汤里",
           "videoUrl": "https://search.bilibili.com/all?keyword=%E7%8E%89%E7%B1%B3%E6%8E%92%E9%AA%A8%E6%B1%A4%20%E7%94%B5%E7%82%92%E9%94%85%20%E6%95%99%E7%A8%8B",
           "videoSource": "search",
-          "imageUrl": ""
+          "imageUrl": "./images/covers/s04.webp",
+          "imageSource": "bilibili"
         },
         {
           "id": "s15",
@@ -383,7 +391,8 @@
           "note": "山药后放，煮久了会化",
           "videoUrl": "https://search.bilibili.com/all?keyword=%E5%B1%B1%E8%8D%AF%E6%8E%92%E9%AA%A8%E6%B1%A4%20%E7%94%B5%E7%82%92%E9%94%85%20%E6%95%99%E7%A8%8B",
           "videoSource": "search",
-          "imageUrl": ""
+          "imageUrl": "./images/covers/s15.webp",
+          "imageSource": "bilibili"
         }
       ]
     }

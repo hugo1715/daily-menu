@@ -49,11 +49,14 @@ daily-wok/
 │  ├─ categories.json      # 三个分类的标题、英文名、说明、主题色
 │  ├─ dishes.psv           # 菜品库：1 行表头 + 90 行菜品，8 字段
 │  ├─ history.json         # 推荐历史（生成脚本自动维护）
-│  └─ images.json          # 可选：菜品配图 { "菜品id": "图片URL" }
+│  ├─ covers.json          # B 站封面清单：菜品 id → 封面/bvid/播放量/标题
+│  └─ images.json          # 可选：手工指定配图 { "菜品id": "图片URL" }
 ├─ scripts/
 │  ├─ generate-daily.mjs   # 每日菜单生成器
+│  ├─ fetch-covers.mjs     # 抓 B 站教程封面（联网，手工跑）
 │  └─ preview.mjs          # 本地静态预览服务器
 ├─ public/
+│  ├─ images/covers/       # 抓下来的封面（88 张 webp）
 │  ├─ index.html           # 单文件页面（内嵌 CSS / JS）
 │  └─ data/today.json      # 生成产物（脚本写入）
 ├─ .github/workflows/
@@ -77,16 +80,24 @@ daily-wok/
 
 ### 卡片图区
 
-每张菜卡顶部有一个 **16:9**、圆角、带细内框的图区：
+每张菜卡顶部有一个 **16:9**、圆角、带细内框的图区，图片按优先级三级回退：
 
-- 默认是 **CSS 生成的渐变插画**（按分类取色 + 菜品 id 微调色相，中间压一个菜名首字的淡色大字），不依赖网络、不会出现破图；
-- 想换成真实照片，在 `data/images.json` 里按菜品 id 配 URL 即可，例如：
+1. **手动指定**：`data/images.json` 里 `"菜品id": "图片URL"`；
+2. **B 站教程封面**（默认）：`data/covers.json` 里记录每道菜「播放量最高、且标题包含菜名」的教程封面，图片已下载到 `public/images/covers/<id>.webp`（服务端裁成 672×378，单张约 30 KB）；
+3. **CSS 渐变插画**：以上都没有时兜底 —— 分类基色 + 菜名首字大字，不依赖网络、不会破图。
 
-  ```json
-  { "m13": "https://example.com/hongshaorou.jpg", "s01": "https://example.com/fanqietang.jpg" }
-  ```
+封面是**构建期下载进仓库**的，不是运行时热链：页面不从 B 站拉图，访问快、也不会因为防盗链显示 404。
 
-  配了图的菜自动渲染 `<img>`（`object-fit: cover`，加载失败会自动退回渐变），没配的继续用插画。
+```powershell
+# 抓取/更新封面（联网操作，需要本机或 Actions 能访问 B 站）
+npm run covers              # 只补缺失的
+npm run covers -- --force   # 全部重抓
+npm run covers -- --force --only m13,s01
+```
+
+抓取规则（避免张冠李戴）：标题必须包含完整菜名；同一视频不会复用给两道菜；标题里出现「米线/米粉/拌面/盖饭/火锅」等、而菜名里没有对应词的一律跳过；封面小于 8 KB 视为低质，换下一条候选。目前 90 道里 88 道有封面，`香肠炒荷兰豆`、`花生鸡爪汤` 两条没有合格教程，走 CSS 插画兜底。
+
+> 封面版权归对应 UP 主所有，这里仅作个人自用；若要公开传播或商用，建议换成自己拍摄或有授权的图片（`data/images.json` 可直接覆盖）。
 
 ### `dishes.psv` 字段
 
